@@ -1,3 +1,4 @@
+import { RegistrationService } from './registration.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +8,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RegistrationComponent implements OnInit {
 
-  constructor() { }
+  recenzent = false;
+  uloga: String = 'OBICAN';
+  constructor(private registracijaService: RegistrationService) { }
 
   ngOnInit() {
+  }
+
+  RegistracijaKorisnika($event) {
+    event.preventDefault();
+    const target = event.target;
+    this.registracijaService.Registracija(target, this.recenzent, this.uloga);
   }
 
 }

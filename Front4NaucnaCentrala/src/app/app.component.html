@@ -36,8 +36,9 @@
           <li><a href="/scientific_journal" class="scrollto">Naucni casopis</a></li>
           <li><a href="/scientific_area" class="scrollto">Naucna oblast</a></li>
           <li><a href="/scientific_papers" class="scrollto">Naucni radovi</a></li>
-          <li><a href="/" class="scrollto"><i class="fa fa-search"></i></a></li>
-          <li><a href="/login" class="btn btn-green">Logovanje</a></li>
+          <li><a href="/search" class="scrollto"><i class="fa fa-search"></i></a></li>
+          <li *ngIf="korisnik == null"><a href="/login" class="scrollto">Logovanje</a></li>
+          <li *ngIf="korisnik != null"><a href="/userProfile" class="scrollto">{{korisnik.korisnicko_ime}}</a></li>
         </ul>
       </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->

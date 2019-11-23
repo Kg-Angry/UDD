@@ -10,6 +10,11 @@ import { NaucniCasopisComponent } from './naucni-casopis/naucni-casopis.componen
 import { NaucnaOblastComponent } from './naucna-oblast/naucna-oblast.component';
 import { NaucniRadoviComponent } from './naucni-radovi/naucni-radovi.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
+import { HttpClientModule } from '@angular/common/http';
+import {FormsModule} from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatSelectModule} from '@angular/material/select';
+import { PretragaElasticComponent } from './pretraga-elastic/pretraga-elastic.component';
 
 @NgModule({
   declarations: [
@@ -20,12 +25,17 @@ import { UserProfileComponent } from './user-profile/user-profile.component';
     NaucniCasopisComponent,
     NaucnaOblastComponent,
     NaucniRadoviComponent,
-    UserProfileComponent
+    UserProfileComponent,
+    PretragaElasticComponent
   ],
   imports: [
     BrowserModule,
     RouterModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
+    FormsModule,
+    BrowserAnimationsModule,
+    MatSelectModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
