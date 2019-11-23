@@ -69,7 +69,7 @@ jQuery(function($) {
 		if(!$('.navbar').hasClass("nav-fixed") && loaded)
 			fixed_point = $('.navbar').offset().top;
 	}
-	
+
 	$('.sample-button').click(function(event){
 		$('#sample-form').slideDown();
 		event.preventDefault();
@@ -83,7 +83,7 @@ jQuery(function($) {
 			url = $(that).attr('action'),
 			type = $(that).attr('method'),
 			dataX = {};
-			
+
 		$(that).find("[name]").each(function(){
 			dataX[$(this).attr("name")] = $(this).val();
 		});

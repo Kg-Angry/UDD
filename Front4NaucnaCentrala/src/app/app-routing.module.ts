@@ -1,3 +1,4 @@
+import { PretragaElasticComponent } from './pretraga-elastic/pretraga-elastic.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { NaucniRadoviComponent } from './naucni-radovi/naucni-radovi.component';
 import { NaucnaOblastComponent } from './naucna-oblast/naucna-oblast.component';
@@ -18,6 +19,7 @@ const appRoutes: Routes = [
   {path: 'scientific_area', component: NaucnaOblastComponent},
   {path: 'scientific_papers', component: NaucniRadoviComponent},
   {path: 'userProfile', component: UserProfileComponent},
+  {path: 'search', component: PretragaElasticComponent},
 ];
 
 @NgModule({

@@ -1,3 +1,5 @@
+import { UserProfileService } from './../user-profile/user-profile.service';
+import { HomeService } from './home.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +9,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  constructor(private homeService: HomeService, private userService: UserProfileService) { }
 
   ngOnInit() {
+    this.homeService.getOblasti();
+    this.homeService.getNaucniCasopisi();
+    this.homeService.getNaucniRadovi();
+    this.userService.getAllUsers();
   }
 
 }

@@ -1110,9 +1110,7 @@ a {
   color: #337ab7;
   text-decoration: none;
 }
-a:hover,
-a:focus {
-}
+
 a:focus {
   outline: thin dotted;
   outline: 5px auto -webkit-focus-ring-color;
@@ -2555,7 +2553,7 @@ output {
   font-size: 14px;
   line-height: 1.42857143;
   color: #555;
-} 
+}
 .form-control[disabled],
 .form-control[readonly],
 fieldset[disabled] .form-control {
@@ -2796,7 +2794,7 @@ select[multiple].input-lg {
   border-color: #7cc576;
 }
 .has-success .form-control:focus {
-  border-color: ##7cc576;
+  border-color: #7cc576;
 }
 .has-success .input-group-addon {
   color: #3c763d;
@@ -3249,8 +3247,7 @@ tbody.collapse.in {
   padding-right: 12px;
   padding-left: 12px;
 }
-.btn-group.open .dropdown-toggle {
-}
+
 .btn-group.open .dropdown-toggle.btn-link {
   -webkit-box-shadow: none;
           box-shadow: none;
@@ -4030,10 +4027,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 .navbar-default .navbar-nav > li > a:focus {
   background-color: transparent;
 }
-.navbar-default .navbar-nav > .active > a,
-.navbar-default .navbar-nav > .active > a:hover,
-.navbar-default .navbar-nav > .active > a:focus {
-}
+
 .navbar-default .navbar-nav > .disabled > a,
 .navbar-default .navbar-nav > .disabled > a:hover,
 .navbar-default .navbar-nav > .disabled > a:focus {

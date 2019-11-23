@@ -316,7 +316,8 @@ section.reviews {
 .btn {
 	display:inline-block;
 	font-family:'Proxima Bold';
-	font-size:18px;
+  font-size:18px;
+  padding: 15px 0;
 	margin:20px 10px;
 	border-radius:3px;
 	transition: all 0.3s ease;
@@ -337,6 +338,17 @@ section.reviews {
 }
 
 .btn.btn-green:hover {
+	background: #96db90;
+	border-color: #96db90;
+}
+
+.btn1.btn-green {
+	background: #7cc576;
+	border:3px solid #7cc576;
+	color:white;
+}
+
+.btn1.btn-green:hover {
 	background: #96db90;
 	border-color: #96db90;
 }
