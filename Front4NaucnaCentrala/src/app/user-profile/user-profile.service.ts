@@ -1,3 +1,4 @@
+import { Korisnik } from 'src/app/class/korisnik';
 import { HomeService } from './../home/home.service';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
@@ -64,5 +65,25 @@ export class UserProfileService {
     });
       localStorage.setItem('korisnik', JSON.stringify(data));
       timer(1500).subscribe(t => location.href = '/userProfile'); });
+  }
+
+  promenaPassworda(target,korisnicko_ime)
+  {
+    const stara_lozinka = target.querySelector('input[name=\'stara_lozinka\']').value;
+    const nova_lozinka = target.querySelector('input[name=\'nova_lozinka\']').value;
+
+    console.log(korisnicko_ime + ' ' + stara_lozinka + ' ' + nova_lozinka + ' ');
+
+    return this.http.put('api/korisnik/promenaLozinke', {korisnicko_ime: korisnicko_ime, email: nova_lozinka, lozinka: stara_lozinka})
+    .subscribe(data => {Swal.fire({
+      position: 'top-end',
+      icon: 'success',
+      title: 'Uspesno ste promenili lozinku',
+      showConfirmButton: false,
+      timer: 1500
+    });
+      localStorage.removeItem('korisnik');
+      timer(1500).subscribe(t => location.href = '/login');
+    });
   }
 }

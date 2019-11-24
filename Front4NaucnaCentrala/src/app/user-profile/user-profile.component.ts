@@ -48,15 +48,16 @@ export class UserProfileComponent implements OnInit {
   IzmenjenaNaucnaOblastRada: NaucnaOblast = new NaucnaOblast();
   casopis_za_izmenu: NaucniCasopis = new NaucniCasopis();
   rad_za_izmenu: NaucniRad = new NaucniRad();
+  selectUploadFile: File = null;
+  IzabraniNaucniCasopis: NaucniCasopis = new NaucniCasopis();
 
   constructor(private userService: UserProfileService, private noService: NaucnaOblastService, private ncService: NaucniCasopisService
     , private nrService: NaucniRadoviService, private regService: RegistrationService) { }
 
   ngOnInit() {
     this.userService.getAllUsers();
-    //console.log(this.sviKorisnici.length);
-    for(let i = 0; i < this.sviKorisnici.length; i++)
-    {
+
+    for (let i = 0; i < this.sviKorisnici.length; i++)   {
         if (this.sviKorisnici[i].tipKorisnika === 'UREDNIK') {
               this.urednici.push(this.sviKorisnici[i]);
             }
@@ -64,10 +65,7 @@ export class UserProfileComponent implements OnInit {
         if (this.sviKorisnici[i].tipKorisnika === 'RECENZENT') {
               this.recenzenti.push(this.sviKorisnici[i]);
             }
-    }
-   //console.log(this.urednici.length);
-   //console.log(this.recenzenti.length);
-
+          }
   }
 
   IzmenaPodataka($event) {
@@ -91,7 +89,6 @@ export class UserProfileComponent implements OnInit {
 
   IzmeniKorisnika(korisnik)  {
     this.kor = korisnik;
-    //console.log(this.kor.korisnicko_ime);
     this.tipKorisnika = this.kor.tipKorisnika;
 
   }
@@ -144,7 +141,10 @@ export class UserProfileComponent implements OnInit {
     event.preventDefault();
     const target = event.target;
 
-    this.nrService.kreirajRad(target, this.koAutori, this.IzabranaNaucnaOblastRada);
+    this.nrService.kreirajRad(target, this.koAutori, this.IzabranaNaucnaOblastRada, this.selectUploadFile,this.IzabraniNaucniCasopis);
+  }
+  SelectFile(event) {
+    this.selectUploadFile = event.target.files[0];
   }
 
   IzmeniRad(rad)
@@ -193,5 +193,13 @@ export class UserProfileComponent implements OnInit {
   ObrisiCasopis(casopis)
   {
     this.ncService.obrisiCasopis(casopis);
+  }
+
+  PromenaLozinke($event)
+  {
+    event.preventDefault()
+    const target = event.target;
+
+    this.userService.promenaPassworda(target, this.korisnik.korisnicko_ime);
   }
 }

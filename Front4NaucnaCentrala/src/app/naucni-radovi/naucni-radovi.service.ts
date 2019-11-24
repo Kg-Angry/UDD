@@ -12,13 +12,14 @@ export class NaucniRadoviService {
 
   constructor(private http: HttpClient, private homeService: HomeService) { }
 
-  kreirajRad(target, koAutori, IzabranaNaucnaOblastRada) {
+  kreirajRad(target, koAutori, IzabranaNaucnaOblastRada, selektovaniFajl: File, IzabraniNaucniCasopis) {
     const nazivRada = target.querySelector('input[name=\'nazivRada\']').value;
     const kljucniPojmovi = target.querySelector('input[name=\'kljucni_pojmovi\']').value;
     const apstrakt = target.querySelector('textarea[name=\'apstrakt\']').value;
 
-    return this.http.post('api/naucni_rad/kreiraj', {naslov: nazivRada, koautori: koAutori, kljucni_pojmovi: kljucniPojmovi
-    , apstrakt: apstrakt, oblast_pripadanja: IzabranaNaucnaOblastRada, putanja_upload_fajla: ' '}).
+    return this.http.post('api/naucni_rad/kreiraj', {naslov: nazivRada, koautori: koAutori,
+       kljucni_pojmovi: kljucniPojmovi, apstrakt: apstrakt, oblast_pripadanja: IzabranaNaucnaOblastRada, putanja_upload_fajla: ' ',
+       naucni_casopis: IzabraniNaucniCasopis}).
     subscribe(data => {Swal.fire({
       position: 'top-end',
       icon: 'success',
@@ -26,12 +27,17 @@ export class NaucniRadoviService {
       showConfirmButton: false,
       timer: 2500
     });
-      this.homeService.getNaucniRadovi();
-      timer(2500).subscribe(t => location.href = '/userProfile'); });
-  }
+      let fd = new FormData();
+      fd.append('file', selektovaniFajl, selektovaniFajl.name);
+      return this.http.post('api/naucni_rad/uploadFile/' + nazivRada, fd).
+     subscribe(data => {
+       this.homeService.getNaucniRadovi();
+       timer(2500).subscribe(t => location.href = '/userProfile')});
 
-  izmeniRad(target, koAutori, IzabranaNaucnaOblastRada)
-  {
+  });
+}
+
+  izmeniRad(target, koAutori, IzabranaNaucnaOblastRada) {
     const naziv = target.querySelector('input[name=\'nazivRadaIzmena\']').value;
     const kljucniPojmovi = target.querySelector('input[name=\'kljucni_pojmoviIzmena\']').value;
     const apstrakt = target.querySelector('textarea[name=\'apstraktIzmena\']').value;
