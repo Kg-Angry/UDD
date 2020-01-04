@@ -1,3 +1,4 @@
+import { NaucniRad } from './../class/naucni-rad';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -6,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./naucni-radovi.component.css']
 })
 export class NaucniRadoviComponent implements OnInit {
+
+  radovi: NaucniRad[] = JSON.parse(localStorage.getItem('radovi'));
 
   constructor() { }
 

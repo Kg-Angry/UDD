@@ -1,3 +1,4 @@
+import { NaucniCasopis } from './naucni-casopis';
 import { Korisnik } from './korisnik';
 import { NaucnaOblast } from './naucna-oblast';
 export class NaucniRad {
@@ -8,4 +9,5 @@ export class NaucniRad {
   apstrakt: String;
   oblast_pripadanja: NaucnaOblast;
   putanja_upload_fajla: String;
+  naucni_casopis: NaucniCasopis;
 }

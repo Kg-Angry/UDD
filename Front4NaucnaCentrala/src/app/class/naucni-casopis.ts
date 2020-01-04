@@ -1,3 +1,4 @@
+import { TipPlacanja } from './tip-placanja.enum';
 import { NaucnaOblast } from './naucna-oblast';
 import { Korisnik } from './korisnik';
 export class NaucniCasopis {
@@ -9,5 +10,7 @@ export class NaucniCasopis {
   urednici: Korisnik[];
   recenzenti: Korisnik[];
   naucna_oblast: NaucnaOblast[];
+  tipoviPlacanja: TipPlacanja[];
   status: boolean;
+  cena: number;
 }

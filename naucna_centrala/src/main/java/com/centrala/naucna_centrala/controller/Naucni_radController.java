@@ -2,6 +2,8 @@ package com.centrala.naucna_centrala.controller;
 
 import com.centrala.naucna_centrala.DTO.KorisnikDTO;
 import com.centrala.naucna_centrala.DTO.Naucni_radDTO;
+import com.centrala.naucna_centrala.elasticSearch.model.IndexUnit;
+import com.centrala.naucna_centrala.elasticSearch.model.Indexer;
 import com.centrala.naucna_centrala.model.*;
 import com.centrala.naucna_centrala.service.Korisnik_service;
 import com.centrala.naucna_centrala.service.Naucna_oblast_service;
@@ -18,6 +20,7 @@ import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.*;
@@ -37,7 +40,8 @@ public class Naucni_radController {
     private Naucni_casopis_service ncs;
     @Autowired
     ServletContext context;
-
+    @Autowired
+    private Indexer indexer;
 
     @RequestMapping(method = RequestMethod.POST, value="/kreiraj")
     public ResponseEntity<?> kreirajRad(@RequestBody Naucni_radDTO rad)
@@ -62,6 +66,8 @@ public class Naucni_radController {
                 naucni_rad.setNaucni_casopis(c);
             naucni_rad.setKljucni_pojmovi(rad.getKljucni_pojmovi());
             naucni_rad.setApstrakt(rad.getApstrakt());
+            Korisnik k = korisnikService.findByKorisnicko_ime(rad.getAutor().getKorisnicko_ime());
+            naucni_rad.setAutor(k);
             Naucna_oblast no = nos.getByNaziv(rad.getOblast_pripadanja().getNaziv());
             naucni_rad.setOblast_pripadanja(no);
             naucni_rad.setPutanja_upload_fajla(rad.getPutanja_upload_fajla());
@@ -92,6 +98,20 @@ public class Naucni_radController {
                 File dest = new File(filePath);
                 file.transferTo(dest);
                 nrs.save(nr);
+
+
+                IndexUnit indexUnit = indexer.getHandler(filePath).getIndexUnit(new File(filePath));
+                indexUnit.setNaslovRada(nr.getNaslov());
+                indexUnit.setKljucniPojmovi(nr.getKljucni_pojmovi());
+                indexUnit.setApstrakt(nr.getApstrakt());
+                indexUnit.setImeAutora(nr.getAutor().getIme());
+                indexUnit.setPrezimeAutora(nr.getAutor().getPrezime());
+                indexUnit.setNazivCasopisa(nr.getNaucni_casopis().getNaziv());
+                indexUnit.setNazivNaucneOblasti(nr.getOblast_pripadanja().getNaziv());
+                //org.springframework.data.elasticsearch.core.geo.GeoPoint geopoint = new org.springframework.data.elasticsearch.core.geo.GeoPoint(k.getLattitude(),k.getLongitude());
+                //indexUnit.setGeo_point(geopoint);
+                indexer.add(indexUnit);
+
                 return new ResponseEntity<>(HttpStatus.CREATED);
             }catch (IOException e)
             {

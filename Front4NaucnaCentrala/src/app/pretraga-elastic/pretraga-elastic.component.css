@@ -816,7 +816,7 @@ legend {
       justify-content: center;
   -ms-flex-align: center;
       align-items: center;
-  background: #00b5e9;
+  /* background: #00b5e9; */
   padding: 15px;
   font-family: 'Roboto', sans-serif;
 }
@@ -916,6 +916,12 @@ legend {
   width: 100%;
 }
 
+
+.s007 form .inner-form .basic-search .input-field  {
+  fill: #ccc;
+  background-color: white;
+}
+
 .s007 form .inner-form .basic-search .input-field input {
   padding: 10px 110px 10px 70px;
 }
@@ -939,6 +945,7 @@ legend {
   height: 34px;
   fill: #ccc;
 }
+
 
 .s007 form .inner-form .basic-search .input-field .result-count {
   display: -ms-flexbox;

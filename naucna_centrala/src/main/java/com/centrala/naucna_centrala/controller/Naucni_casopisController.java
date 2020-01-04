@@ -6,6 +6,7 @@ import com.centrala.naucna_centrala.DTO.Naucni_casopisDTO;
 import com.centrala.naucna_centrala.model.Korisnik;
 import com.centrala.naucna_centrala.model.Naucna_oblast;
 import com.centrala.naucna_centrala.model.Naucni_casopis;
+import com.centrala.naucna_centrala.model.TipPlacanja;
 import com.centrala.naucna_centrala.service.Korisnik_service;
 import com.centrala.naucna_centrala.service.Naucna_oblast_service;
 import com.centrala.naucna_centrala.service.Naucni_casopis_service;
@@ -56,6 +57,7 @@ public class Naucni_casopisController {
         Set<Korisnik> urednici = new HashSet<>();
         Set<Korisnik> recenzenti = new HashSet<>();
         Set<Naucna_oblast> naucna_oblast = new HashSet<>();
+        List<TipPlacanja> t = new ArrayList<>();
 
         if(nc == null)
         {
@@ -97,10 +99,17 @@ public class Naucni_casopisController {
 
             }
             naucni_casopis.setNaucna_oblast(naucna_oblast);
-
+            if(ncDTO.getTipoviPlacanja() != null) {
+                for (TipPlacanja tip : ncDTO.getTipoviPlacanja()) {
+                    System.out.println("Placanja" + tip);
+                    t.add(tip);
+                }
+            }
+            naucni_casopis.setTipoviPlacanja(t);
+            naucni_casopis.setCena(ncDTO.getCena());
             naucni_casopis.setStatus(false);
 
-            ncs.save(naucni_casopis);
+            naucni_casopis = ncs.save(naucni_casopis);
 
             return new ResponseEntity<>(HttpStatus.OK);
         }else
@@ -145,6 +154,8 @@ public class Naucni_casopisController {
 
             }
             nc.setNaucna_oblast(naucna_oblast);
+            nc.setCena(ncDTO.getCena());
+            nc.setTipoviPlacanja(ncDTO.getTipoviPlacanja());
 
             ncs.save(nc);
             return new ResponseEntity<>(HttpStatus.OK);

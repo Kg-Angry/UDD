@@ -11,13 +11,27 @@ export class NaucniCasopisService {
 
   constructor(private http: HttpClient, private homeService: HomeService) { }
 
-  kreirajCasopis(target, tipCasopisa, Urednici, Recenzenti, Glavni_Korisnik, IzabranaNaucnaOblast)
+  kreirajCasopis(target, tipCasopisa, Urednici, Recenzenti, Glavni_Korisnik, IzabranaNaucnaOblast, IzabaniTipoviPlacanja)
   {
     const naziv = target.querySelector('input[name=\'naziv\']').value;
     const issn = target.querySelector('input[name=\'issn\']').value;
-
+    const cena = target.querySelector('input[name=\'cena\']').value;
+    if(cena < 0)
+    {
+      Swal.fire({
+        position: 'top-end',
+        icon: 'error',
+        title: 'Cena za casopis ne sme biti negativna',
+        showConfirmButton: false,
+        timer: 2500
+      });
+        this.homeService.getNaucniCasopisi();
+        timer(2500).subscribe(t => location.href = '/userProfile');
+    } else{
+    console.log(IzabaniTipoviPlacanja);
     return this.http.post('api/naucni_casopis/kreirajCasopis', {naziv: naziv, issn: issn, tipCasopisa: tipCasopisa,
-       glavni_urednik: Glavni_Korisnik, urednici: Urednici, recenzent: Recenzenti, naucna_oblast: IzabranaNaucnaOblast}).
+       tipoviPlacanja: IzabaniTipoviPlacanja,
+        glavni_urednik: Glavni_Korisnik, urednici: Urednici, recenzent: Recenzenti, naucna_oblast: IzabranaNaucnaOblast, cena: cena}).
     subscribe(data => {
       Swal.fire({
         position: 'top-end',
@@ -30,6 +44,7 @@ export class NaucniCasopisService {
         timer(2500).subscribe(t => location.href = '/userProfile');
     });
   }
+}
 
   izmeniCasopis(target, tipCasopisa, Urednici, Recenzenti, Glavni_Korisnik, IzabranaNaucnaOblast) {
 
@@ -63,5 +78,19 @@ export class NaucniCasopisService {
         this.homeService.getNaucniCasopisi();
         timer(2500).subscribe(t => location.href = '/userProfile');
       })
+  }
+
+  preusmeriBanka()
+  {
+    location.href = "/banka";
+  }
+  preusmeriPayPal()
+  {
+    location.href = "/paypal";
+  }
+  preusmeriBitcoin()
+  {
+    return this.http.get('api1/bitcoin/startPayment', {responseType: 'text'})
+    .subscribe((data: string) => {location.href = data});
   }
 }

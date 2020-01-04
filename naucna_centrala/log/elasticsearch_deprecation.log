@@ -1,0 +1,2 @@
+[2019-12-21T01:22:53,312][WARN ][o.e.d.i.m.TypeParsers    ] Expected a boolean [true/false] for property [index] but got [not_analyzed]
+[2019-12-21T01:22:53,317][WARN ][o.e.d.i.m.TypeParsers    ] Expected a boolean [true/false] for property [index] but got [not_analyzed]

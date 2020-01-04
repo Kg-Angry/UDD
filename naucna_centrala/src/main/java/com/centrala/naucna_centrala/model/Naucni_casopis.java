@@ -1,10 +1,13 @@
 package com.centrala.naucna_centrala.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonSetter;
 import org.hibernate.annotations.Columns;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.*;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 @Entity
 public class Naucni_casopis {
@@ -22,6 +25,12 @@ public class Naucni_casopis {
     @Column(name="tipCasopisa",nullable = false, length = 255)
     @Enumerated(EnumType.STRING)
     private TipCasopisa tipCasopisa;
+
+    @ElementCollection(targetClass = TipPlacanja.class)
+    @JoinTable(name = "tipovi_placanja", joinColumns = @JoinColumn(name = "id"))
+    @Column(name = "tip_placanja", nullable = false)
+    @Enumerated(EnumType.STRING)
+    private List<TipPlacanja> tipoviPlacanja = new ArrayList<>();
 
     //glavni urednik je samo 1 na casopisu
     @ManyToOne
@@ -51,21 +60,23 @@ public class Naucni_casopis {
     @Column(name = "status",nullable = false, length = 255)
     private boolean status;
 
-    public Naucni_casopis()
-    {
+    @Column(name="cena",nullable = false, length = 255)
+    private  Double cena;
 
+    public Naucni_casopis() {
     }
 
-    public Naucni_casopis(String naziv, int issn, TipCasopisa tipCasopisa, Korisnik glavni_urednik, Set<Korisnik> urednici, Set<Korisnik> recenzent, Set<Naucna_oblast> naucna_oblast, boolean status) {
+    public Naucni_casopis(String naziv, int issn, TipCasopisa tipCasopisa, List<TipPlacanja> tipoviPlacanja, Korisnik glavni_urednik, Set<Korisnik> urednici, Set<Korisnik> recenzent, Set<Naucna_oblast> naucna_oblast, boolean status, Double cena) {
         this.naziv = naziv;
         this.issn = issn;
         this.tipCasopisa = tipCasopisa;
+        this.tipoviPlacanja = tipoviPlacanja;
         this.glavni_urednik = glavni_urednik;
         this.urednici = urednici;
         this.recenzent = recenzent;
         this.naucna_oblast = naucna_oblast;
         this.status = status;
-
+        this.cena = cena;
     }
 
     public Long getId() {
@@ -98,6 +109,14 @@ public class Naucni_casopis {
 
     public void setTipCasopisa(TipCasopisa tipCasopisa) {
         this.tipCasopisa = tipCasopisa;
+    }
+
+    public List<TipPlacanja> getTipoviPlacanja() {
+        return tipoviPlacanja;
+    }
+
+    public void setTipoviPlacanja(List<TipPlacanja> tipoviPlacanja) {
+        this.tipoviPlacanja = tipoviPlacanja;
     }
 
     public Korisnik getGlavni_urednik() {
@@ -138,5 +157,13 @@ public class Naucni_casopis {
 
     public void setStatus(boolean status) {
         this.status = status;
+    }
+
+    public Double getCena() {
+        return cena;
+    }
+
+    public void setCena(Double cena) {
+        this.cena = cena;
     }
 }

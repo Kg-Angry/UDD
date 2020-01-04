@@ -2,8 +2,7 @@ package com.centrala.naucna_centrala.DTO;
 
 import com.centrala.naucna_centrala.model.*;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 public class Naucni_casopisDTO {
 
@@ -11,22 +10,25 @@ public class Naucni_casopisDTO {
     private String naziv;
     private int issn;
     private TipCasopisa tipCasopisa;
+    private List<TipPlacanja> tipoviPlacanja = new ArrayList<>();
     private KorisnikDTO glavni_urednik;
     private Set<KorisnikDTO> urednici = new HashSet<>();
     private Set<KorisnikDTO> recenzent = new HashSet<>();
     private Set<Naucna_oblastDTO> naucna_oblast = new HashSet<>();
     private boolean status;
+    private Double cena;
 
     public Naucni_casopisDTO()
     {
 
     }
 
-    public Naucni_casopisDTO(Long id, String naziv, int issn, TipCasopisa tipCasopisa, Korisnik glavni_urednik, Set<Korisnik> urednici, Set<Korisnik> recenzent, Set<Naucna_oblast> naucna_oblast, boolean status) {
+    public Naucni_casopisDTO(Long id, String naziv, int issn, TipCasopisa tipCasopisa, List<TipPlacanja> tipoviPlacanja, Korisnik glavni_urednik, Set<Korisnik> urednici, Set<Korisnik> recenzent, Set<Naucna_oblast> naucna_oblast, boolean status, Double cena) {
         this.id = id;
         this.naziv = naziv;
         this.issn = issn;
         this.tipCasopisa = tipCasopisa;
+        this.tipoviPlacanja = tipoviPlacanja;
         this.glavni_urednik = new KorisnikDTO(glavni_urednik);
         for(Korisnik k : urednici)
         {
@@ -36,17 +38,17 @@ public class Naucni_casopisDTO {
         {
             this.recenzent.add(new KorisnikDTO(k));
         }
-        for(Naucna_oblast n : naucna_oblast)
+        for(Naucna_oblast o : naucna_oblast)
         {
-            this.naucna_oblast.add(new Naucna_oblastDTO(n));
+            this.naucna_oblast.add(new Naucna_oblastDTO(o));
         }
-
         this.status = status;
+        this.cena = cena;
     }
 
-    public Naucni_casopisDTO(Naucni_casopis nc)
+    public Naucni_casopisDTO(Naucni_casopis n)
     {
-        this(nc.getId(),nc.getNaziv(),nc.getIssn(),nc.getTipCasopisa(),nc.getGlavni_urednik(),nc.getUrednici(),nc.getRecenzent(),nc.getNaucna_oblast(),nc.isStatus());
+        this(n.getId(),n.getNaziv(),n.getIssn(),n.getTipCasopisa(),n.getTipoviPlacanja(),n.getGlavni_urednik(),n.getUrednici(),n.getRecenzent(),n.getNaucna_oblast(),n.isStatus(),n.getCena());
     }
 
     public Long getId() {
@@ -79,6 +81,14 @@ public class Naucni_casopisDTO {
 
     public void setTipCasopisa(TipCasopisa tipCasopisa) {
         this.tipCasopisa = tipCasopisa;
+    }
+
+    public List<TipPlacanja> getTipoviPlacanja() {
+        return tipoviPlacanja;
+    }
+
+    public void setTipoviPlacanja(List<TipPlacanja> tipoviPlacanja) {
+        this.tipoviPlacanja = tipoviPlacanja;
     }
 
     public KorisnikDTO getGlavni_urednik() {
@@ -119,5 +129,13 @@ public class Naucni_casopisDTO {
 
     public void setStatus(boolean status) {
         this.status = status;
+    }
+
+    public Double getCena() {
+        return cena;
+    }
+
+    public void setCena(Double cena) {
+        this.cena = cena;
     }
 }

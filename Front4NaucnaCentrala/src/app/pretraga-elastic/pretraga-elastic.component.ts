@@ -1,3 +1,4 @@
+import { PretragaElasticService } from './pretraga-elastic.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +8,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PretragaElasticComponent implements OnInit {
 
-  constructor() { }
+  kriterijumPretrage: String;
+  constructor(private pretragaService: PretragaElasticService) { }
 
   ngOnInit() {
+  }
+
+  PretragaPoPoljima(event){
+    event.preventDefault();
+    const target = event.target;
+    this.pretragaService.pretraziTermove(target, this.kriterijumPretrage);
   }
 
 }

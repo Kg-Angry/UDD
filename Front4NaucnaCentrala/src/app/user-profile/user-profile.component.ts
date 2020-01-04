@@ -1,3 +1,4 @@
+import { TipPlacanja } from './../class/tip-placanja.enum';
 import { RegistrationService } from './../registration/registration.service';
 import { NaucniRadoviService } from './../naucni-radovi/naucni-radovi.service';
 import { NaucniCasopisService } from './../naucni-casopis/naucni-casopis.service';
@@ -50,6 +51,7 @@ export class UserProfileComponent implements OnInit {
   rad_za_izmenu: NaucniRad = new NaucniRad();
   selectUploadFile: File = null;
   IzabraniNaucniCasopis: NaucniCasopis = new NaucniCasopis();
+  IzabaniTipoviPlacanja: TipPlacanja[] = [];
 
   constructor(private userService: UserProfileService, private noService: NaucnaOblastService, private ncService: NaucniCasopisService
     , private nrService: NaucniRadoviService, private regService: RegistrationService) { }
@@ -141,7 +143,7 @@ export class UserProfileComponent implements OnInit {
     event.preventDefault();
     const target = event.target;
 
-    this.nrService.kreirajRad(target, this.koAutori, this.IzabranaNaucnaOblastRada, this.selectUploadFile,this.IzabraniNaucniCasopis);
+    this.nrService.kreirajRad(target, this.koAutori, this.IzabranaNaucnaOblastRada, this.selectUploadFile, this.IzabraniNaucniCasopis, this.korisnik);
   }
   SelectFile(event) {
     this.selectUploadFile = event.target.files[0];
@@ -171,7 +173,7 @@ export class UserProfileComponent implements OnInit {
     const target = event.target;
 
     this.ncService.kreirajCasopis(target, this.tipCasopisa, this.IzabraniUrednici,
-       this.IzabraniRecenzenti, this.korisnik, this.IzabranaNaucnaOblast);
+       this.IzabraniRecenzenti, this.korisnik, this.IzabranaNaucnaOblast, this.IzabaniTipoviPlacanja);
   }
 
   IzmeniCasopis(casopis: NaucniCasopis)
