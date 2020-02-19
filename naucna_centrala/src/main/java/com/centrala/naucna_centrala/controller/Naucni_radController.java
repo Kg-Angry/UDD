@@ -9,9 +9,15 @@ import com.centrala.naucna_centrala.service.Korisnik_service;
 import com.centrala.naucna_centrala.service.Naucna_oblast_service;
 import com.centrala.naucna_centrala.service.Naucni_casopis_service;
 import com.centrala.naucna_centrala.service.Naucni_rad_service;
+import org.elasticsearch.action.index.IndexResponse;
+import org.elasticsearch.client.Client;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.ByteArrayResource;
+import org.springframework.core.io.InputStreamResource;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -19,12 +25,15 @@ import org.springframework.web.multipart.MultipartFile;
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.*;
 import java.util.logging.Logger;
+
+import static org.elasticsearch.common.xcontent.XContentFactory.jsonBuilder;
 
 @RestController
 @RequestMapping(value = "api/naucni_rad")
@@ -42,25 +51,20 @@ public class Naucni_radController {
     ServletContext context;
     @Autowired
     private Indexer indexer;
+    @Autowired
+    private Client client;
 
     @RequestMapping(method = RequestMethod.POST, value="/kreiraj")
     public ResponseEntity<?> kreirajRad(@RequestBody Naucni_radDTO rad)
     {
 
         Naucni_rad nr = nrs.findByNaslov(rad.getNaslov());
-        Set<Korisnik> Koautori = new HashSet<>();
 
         if(nr == null)
         {
             Naucni_rad naucni_rad = new Naucni_rad();
             naucni_rad.setNaslov(rad.getNaslov());
-            for(KorisnikDTO kDTO : rad.getKoautori())
-            {
-                Korisnik k = korisnikService.findByKorisnicko_ime(kDTO.getKorisnicko_ime());
-                    if(k != null)
-                        Koautori.add(k);
-            }
-            naucni_rad.setKoautori(Koautori);
+            naucni_rad.setKoautori(rad.getKoautori());
             Naucni_casopis c = ncs.findByNaziv(rad.getNaucni_casopis().getNaziv());
             if( c != null)
                 naucni_rad.setNaucni_casopis(c);
@@ -104,8 +108,7 @@ public class Naucni_radController {
                 indexUnit.setNaslovRada(nr.getNaslov());
                 indexUnit.setKljucniPojmovi(nr.getKljucni_pojmovi());
                 indexUnit.setApstrakt(nr.getApstrakt());
-                indexUnit.setImeAutora(nr.getAutor().getIme());
-                indexUnit.setPrezimeAutora(nr.getAutor().getPrezime());
+                indexUnit.setAutor(nr.getAutor().getIme()+" "+ nr.getAutor().getPrezime());
                 indexUnit.setNazivCasopisa(nr.getNaucni_casopis().getNaziv());
                 indexUnit.setNazivNaucneOblasti(nr.getOblast_pripadanja().getNaziv());
                 //org.springframework.data.elasticsearch.core.geo.GeoPoint geopoint = new org.springframework.data.elasticsearch.core.geo.GeoPoint(k.getLattitude(),k.getLongitude());
@@ -143,12 +146,7 @@ public class Naucni_radController {
         Set<Korisnik> Koautori = new HashSet<>();
         if(nr != null)
         {
-            for(KorisnikDTO kDTO : nrDTO.getKoautori())
-            {
-                Korisnik k = korisnikService.findByKorisnicko_ime(kDTO.getKorisnicko_ime());
-                Koautori.add(k);
-            }
-            nr.setKoautori(Koautori);
+            nr.setKoautori(nrDTO.getKoautori());
             nr.setKljucni_pojmovi(nrDTO.getKljucni_pojmovi());
             nr.setApstrakt(nrDTO.getApstrakt());
             Naucna_oblast no = nos.getByNaziv(nrDTO.getOblast_pripadanja().getNaziv());
@@ -172,5 +170,28 @@ public class Naucni_radController {
             return new ResponseEntity<>(HttpStatus.OK);
         }
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    }
+
+    @PostMapping(value = "/preuzmi")
+    public ResponseEntity<InputStreamResource> preuzmiRad(@RequestBody Naucni_radDTO ncDTO) throws IOException {
+
+        Naucni_rad rad = nrs.findByNaslov(ncDTO.getNaslov());
+        String baseDirectory = "";
+        Path putanjaRada = Paths.get(baseDirectory, rad.getPutanja_upload_fajla());
+        try
+        {
+            File file = new File(putanjaRada.toString());
+            HttpHeaders respHeaders = new HttpHeaders();
+            MediaType mediaType = MediaType.parseMediaType("application/pdf");
+            respHeaders.setContentType(mediaType);
+            respHeaders.setContentLength(file.length());
+            respHeaders.setContentDispositionFormData("attachment", rad.getNaslov());
+            InputStreamResource isr = new InputStreamResource(new FileInputStream(file));
+            return new ResponseEntity<InputStreamResource>(isr, respHeaders, HttpStatus.OK);
+        }
+        catch (Exception e)
+        {
+            return new ResponseEntity<InputStreamResource>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 }

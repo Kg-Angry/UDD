@@ -10,7 +10,7 @@ public class Naucni_radDTO {
 
     private Long id;
     private String naslov;
-    private Set<KorisnikDTO> koautori = new HashSet<>();
+    private String koautori;
     private String kljucni_pojmovi;
     private String apstrakt;
     private Naucna_oblastDTO oblast_pripadanja;
@@ -23,13 +23,10 @@ public class Naucni_radDTO {
 
     }
 
-    public Naucni_radDTO(Long id, String naslov, Set<Korisnik> koautori, String kljucni_pojmovi, String apstrakt, Naucna_oblast oblast_pripadanja, String putanja_upload_fajla, Naucni_casopis naucni_casopis, Korisnik autor) {
+    public Naucni_radDTO(Long id, String naslov, String koautori, String kljucni_pojmovi, String apstrakt, Naucna_oblast oblast_pripadanja, String putanja_upload_fajla, Naucni_casopis naucni_casopis, Korisnik autor) {
         this.id = id;
         this.naslov = naslov;
-        for(Korisnik k : koautori)
-        {
-            this.koautori.add(new KorisnikDTO(k));
-        }
+        this.koautori=koautori;
         this.kljucni_pojmovi = kljucni_pojmovi;
         this.apstrakt = apstrakt;
         this.oblast_pripadanja = new Naucna_oblastDTO(oblast_pripadanja);
@@ -59,11 +56,11 @@ public class Naucni_radDTO {
         this.naslov = naslov;
     }
 
-    public Set<KorisnikDTO> getKoautori() {
+    public String getKoautori() {
         return koautori;
     }
 
-    public void setKoautori(Set<KorisnikDTO> koautori) {
+    public void setKoautori(String koautori) {
         this.koautori = koautori;
     }
 

@@ -35,8 +35,8 @@ public class ResultRetriever {
 	public ResultRetriever(){
 	}
 
-	public List<ResultData> getResults(org.elasticsearch.index.query.QueryBuilder query
-										  /*List<RequiredHighlight> requiredHighlights*/) {
+	public List<ResultData> getResults(org.elasticsearch.index.query.QueryBuilder query,
+										  List<RequiredHighlight> requiredHighlights) {
 		if (query == null) {
 			return null;
 		}
@@ -45,12 +45,10 @@ public class ResultRetriever {
 		List<ResultData> results = new ArrayList<ResultData>();
        //System.out.println("Repository " + repository.search(query, PageRequest.of(0,10)));
         for (IndexUnit indexUnit : repository.search(query)) {
-        	System.out.println("Aleksandar");
         	if(indexUnit.getNazivCasopisa() != null){
-        		System.out.println("Bojana");
         		ResultData rd = new ResultData();
 				rd.setApstrakt(indexUnit.getApstrakt());
-	        	//rad.setAutor(indexUnit.getAutor());
+	        	rd.setAutor(indexUnit.getAutor());
 	        	rd.setNazivnaucneOblasti(indexUnit.getNazivNaucneOblasti());
 	        	rd.setKljucniPojmovi(indexUnit.getKljucniPojmovi());
 	        	rd.setNaslovRada(indexUnit.getNaslovRada());

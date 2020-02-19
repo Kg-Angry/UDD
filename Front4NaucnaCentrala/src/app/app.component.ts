@@ -10,4 +10,8 @@ export class AppComponent {
   title = 'Front4NaucnaCentrala';
 
   korisnik: Korisnik = JSON.parse(localStorage.getItem('korisnik'));
+
+  ResetujDocument(){
+    localStorage.removeItem('document');
+  }
 }

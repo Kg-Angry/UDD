@@ -4,7 +4,7 @@ import { NaucnaOblast } from './naucna-oblast';
 export class NaucniRad {
   id: number;
   naslov: String;
-  koautor: Korisnik[];
+  koautori: String;
   kljucni_pojmovi: String;
   apstrakt: String;
   oblast_pripadanja: NaucnaOblast;

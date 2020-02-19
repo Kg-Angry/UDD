@@ -14,10 +14,11 @@
         <mat-form-field>
           <mat-label>Kriterijum pretrage: </mat-label>
           <mat-select [(ngModel)]="kriterijumPretrage" [ngModelOptions]="{standalone: true}">
-            <mat-option value="sadrzaj">SADRZAJ</mat-option>
-            <mat-option value="naslovRada">NASLOV RADA</mat-option>
-            <mat-option value="kljucniPojmovi">KLJUCNI POJMOVI</mat-option>
             <mat-option value="nazivCasopisa">NAZIV CASOPISA</mat-option>
+            <mat-option value="naslovRada">NASLOV RADA</mat-option>
+            <mat-option value="autor">IME I PREZIME AUTORA</mat-option>
+            <mat-option value="kljucniPojmovi">KLJUCNI POJMOVI</mat-option>
+            <mat-option value="sadrzaj">SADRZAJ</mat-option>
             <mat-option value="nazivNaucneOblasti">NAZIV NAUCNE OBLASTI</mat-option>
           </mat-select>
         </mat-form-field>
@@ -68,8 +69,43 @@
       </div>
       </div>
     </div>
-    </form>
+  </form>
 </div>
+<h5>Rezultati pretrage: </h5>
+<table class="table">
+  <thead>
+    <tr style="text-align: center;">
+      <th scope="col">#</th>
+      <th scope="col">Naslov rada</th>
+      <th scope="col">Autor</th>
+      <th scope="col">Apstrakt</th>
+      <th scope="col">Kljucni pojmovi</th>
+      <th scope="col">Naucna oblast</th>
+      <th scope="col">Casopis u kom je objavljen</th>
+      <th scope="col">Sadrzaj</th>
+      <th scope="col">Preuzmi</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let r of rezultat" >
+      <th scope="row"></th>
+      <td style="text-align: center;">{{r.naslovRada}}</td>
+      <td style="text-align: center;">{{r.autor}}</td>
+      <td style="text-align: center;">{{r.apstrakt}}</td>
+      <td style="text-align: center;">{{r.kljucniPojmovi}}</td>
+      <td style="text-align: center;">{{r.nazivnaucneOblasti}}</td>
+      <td style="text-align: center;">{{r.nazivCasopisa}}</td>
+      <td><textarea rows="10" cols="75">{{r.sadrzaj}}</textarea></td>
+      <td>
+          <div *ngFor="let c of casopisi" >
+            <button *ngIf="r.nazivCasopisa === c.naziv && c.tipCasopisa === 'OPEN_ACCESS'"  class="btn btn-green" (click)="Preuzmi(r.naslovRada)">Preuzmi</button>
+            <button *ngIf="r.nazivCasopisa === c.naziv && c.tipCasopisa === 'SA_PRETPLATOM'"  class="btn btn-green" (click)="Kupi(r.naslovRada)">Kupi</button>
+          </div>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
 <script src="js/extention/choices.js"></script>
 <script>
   const customSelects = document.querySelectorAll("select");

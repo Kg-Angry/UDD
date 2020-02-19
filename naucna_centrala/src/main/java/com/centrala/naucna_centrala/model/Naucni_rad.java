@@ -14,8 +14,8 @@ public class Naucni_rad {
     private String naslov;
 
     //vise koautor-a u jednom radu
-    @OneToMany(mappedBy = "id")
-    private Set<Korisnik> koautori = new HashSet<>();
+   @Column(name="koautori")
+    private String koautori;
 
     @Column(name="kljucni_pojmovi", nullable = false, length = 255)
     private String kljucni_pojmovi;
@@ -40,7 +40,7 @@ public class Naucni_rad {
 
     }
 
-    public Naucni_rad(String naslov, Set<Korisnik> koautori, String kljucni_pojmovi, String apstrakt, Naucna_oblast oblast_pripadanja, String putanja_upload_fajla, Korisnik autor, Naucni_casopis naucni_casopis) {
+    public Naucni_rad(String naslov, String koautori, String kljucni_pojmovi, String apstrakt, Naucna_oblast oblast_pripadanja, String putanja_upload_fajla, Korisnik autor, Naucni_casopis naucni_casopis) {
         this.naslov = naslov;
         this.koautori = koautori;
         this.kljucni_pojmovi = kljucni_pojmovi;
@@ -67,11 +67,11 @@ public class Naucni_rad {
         this.naslov = naslov;
     }
 
-    public Set<Korisnik> getKoautori() {
+    public String getKoautori() {
         return koautori;
     }
 
-    public void setKoautori(Set<Korisnik> koautori) {
+    public void setKoautori(String koautori) {
         this.koautori = koautori;
     }
 

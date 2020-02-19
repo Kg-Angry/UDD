@@ -1,11 +1,8 @@
 package com.centrala.naucna_centrala.elasticSearch.controller;
 
-import java.io.ByteArrayOutputStream;
-import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.InputStream;
-import java.net.InetAddress;
+import java.net.UnknownHostException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,19 +14,14 @@ import com.centrala.naucna_centrala.elasticSearch.model.*;
 import com.centrala.naucna_centrala.elasticSearch.repository.BookRepository;
 import com.centrala.naucna_centrala.service.Korisnik_service;
 import org.apache.lucene.queryparser.classic.ParseException;
+import org.elasticsearch.action.get.GetRequestBuilder;
 import org.elasticsearch.action.search.SearchRequestBuilder;
 import org.elasticsearch.action.search.SearchResponse;
 import org.elasticsearch.client.Client;
-import org.elasticsearch.client.transport.TransportClient;
-import org.elasticsearch.common.settings.Settings;
-import org.elasticsearch.common.transport.InetSocketTransportAddress;
 import org.elasticsearch.index.query.BoolQueryBuilder;
 import org.elasticsearch.index.query.QueryBuilders;
 import org.elasticsearch.search.fetch.subphase.highlight.HighlightBuilder;
-import org.elasticsearch.transport.client.PreBuiltTransportClient;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -63,32 +55,23 @@ public class SearchController {
 	    .field("kljucniPojmovi", 50)
 	    .field("nazivCasopisa", 50)
 	    .field("nazivNaucneOblasti", 50);
-		
-		@PostMapping(value="/term", consumes="application/json")
-		public ResponseEntity<List<Naucni_radDTO>> searchTermQuery(@RequestBody PretragaDTO searchDTO) throws Exception {
-			SimpleQuery simpleQuery = new SimpleQuery();
-			String field = getFieldNameFromKriterijum(searchDTO.getKriterijum());
-			simpleQuery.setField(field);
-			//System.out.println("Upit: " + searchDTO.getUpit());
-			simpleQuery.setValue(searchDTO.getUpit());
-			org.elasticsearch.index.query.QueryBuilder query=  QueryBuilder.buildQuery(SearchType.regular, simpleQuery.getField(), simpleQuery.getValue());
 
-			List<Naucni_radDTO> results = new ArrayList<>();
+	public SearchController() throws UnknownHostException {
+	}
 
-			highlightBuilder.highlightQuery(query);
-			SearchRequestBuilder request = nodeClient.prepareSearch("libraryserbian")
-					.setQuery(query)
-					.highlighter(highlightBuilder);
-			SearchResponse response = request.get();
-			System.out.println("GETResponse: " + request.get());
-			results = resultRetriever.getResponse(response);
-			System.out.println("Uzeo " + results);
-			//List<RadDTO> results = resultRetriever.getResults(query, rh);
+	@PostMapping(value="/term", consumes="application/json")
+		public ResponseEntity<List<ResultData>> searchTermQuery(@RequestBody PretragaDTO searchDTO) throws Exception {
 
-			return new ResponseEntity<>(results, HttpStatus.OK);
+		SimpleQuery simpleQuery = new SimpleQuery();
+		simpleQuery.setField(searchDTO.getKriterijum());
+		//System.out.println("Upit: " + searchDTO.getUpit());
+		simpleQuery.setValue(searchDTO.getUpit());
+		org.elasticsearch.index.query.QueryBuilder query= QueryBuilder.buildQuery(SearchType.phrase, simpleQuery.getField(), simpleQuery.getValue());
+		List<RequiredHighlight> rh = new ArrayList<RequiredHighlight>();
+		rh.add(new RequiredHighlight(simpleQuery.getField(), simpleQuery.getValue()));
+		List<ResultData> results = resultRetriever.getResults(query, rh);
+		return new ResponseEntity<List<ResultData>>(results, HttpStatus.OK);
 		}
-
-
 
 		/*@PostMapping(value="/search/fuzzy", consumes="application/json")
 		public ResponseEntity<List<ResultData>> searchFuzzy(@RequestBody SimpleQuery simpleQuery) throws Exception {
@@ -120,7 +103,7 @@ public class SearchController {
 		@PostMapping(value="/search/phrase", consumes="application/json")
 		public ResponseEntity<List<Naucni_radDTO>> searchPhrase(@RequestBody PretragaDTO searchDTO) throws Exception {
 			SimpleQuery simpleQuery = new SimpleQuery();
-			String field = getFieldNameFromKriterijum(searchDTO.getKriterijum());
+			String field = searchDTO.getKriterijum();
 			simpleQuery.setField(field);
 			simpleQuery.setValue(searchDTO.getUpit());
 			org.elasticsearch.index.query.QueryBuilder query= QueryBuilder.buildQuery(SearchType.phrase, simpleQuery.getField(), simpleQuery.getValue());
@@ -218,7 +201,7 @@ public class SearchController {
 			if(searchDTO.getKriterijum().equals("")) {
 				simpleQuery.setValue(searchDTO.getUpit());
 			}else{
-				kriterijum = getFieldNameFromKriterijum(searchDTO.getKriterijum());
+				kriterijum = searchDTO.getKriterijum();
 				simpleQuery.setField(kriterijum);
 				simpleQuery.setValue(searchDTO.getUpit());
 			}
@@ -299,27 +282,5 @@ public class SearchController {
 					}
 				}
 			}
-		}
-		
-		private String getFieldNameFromKriterijum(String kriterijum) {
-			String field = "";
-			if(kriterijum.equals("naslovRada")) {
-				field = "naslovRada";
-			}else if(kriterijum.equals("imeAutora")) {
-				field = "imeAutora";
-			}else if(kriterijum.equals("prezimeAutora")) {
-					field = "prezimeAutora";
-			}else if(kriterijum.equals("kljucniPojmovi")) {
-				field = "kljucniPojmovi";
-			}else if(kriterijum.equals("nazivNaucneOblasti")) {
-				field = "nazivNaucneOblasti";
-			}else if(kriterijum.equals("nazivCasopisa")) {
-				field = "nazivCasopisa";
-			}else if(kriterijum.equals("apstrakt")) {
-				field = "apstrakt";
-			}else if(kriterijum.equals("sadrzaj")) {
-				field = "sadrzaj";
-			}
-			return field;
 		}
 }

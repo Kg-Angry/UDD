@@ -16,6 +16,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatSelectModule} from '@angular/material/select';
 import { PretragaElasticComponent } from './pretraga-elastic/pretraga-elastic.component';
 import {MatInputModule} from '@angular/material/input';
+import {MatExpansionModule} from '@angular/material/expansion';
 
 @NgModule({
   declarations: [
@@ -38,6 +39,7 @@ import {MatInputModule} from '@angular/material/input';
     BrowserAnimationsModule,
     MatSelectModule,
     MatInputModule,
+    MatExpansionModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -31,9 +31,7 @@ public class IndexUnit {
 	@Field(type = FieldType.text, analyzer= "serbian-analyzer", index = true, store = true)
 	private String nazivNaucneOblasti;
 	@Field(type = FieldType.text, analyzer= "serbian-analyzer", index = true, store = true)
-	private String imeAutora;
-	@Field(type = FieldType.text, analyzer= "serbian-analyzer", index = true, store = true)
-	private String prezimeAutora;
+	private String autor;
 	@Id
 	@Field(type = FieldType.text, index = false, store = true)
 	private String filename;
@@ -92,20 +90,12 @@ public class IndexUnit {
 		this.nazivNaucneOblasti = nazivNaucneOblasti;
 	}
 
-	public String getImeAutora() {
-		return imeAutora;
+	public String getAutor() {
+		return autor;
 	}
 
-	public void setImeAutora(String imeAutora) {
-		this.imeAutora = imeAutora;
-	}
-
-	public String getPrezimeAutora() {
-		return prezimeAutora;
-	}
-
-	public void setPrezimeAutora(String prezimeAutora) {
-		this.prezimeAutora = prezimeAutora;
+	public void setAutor(String autor) {
+		this.autor = autor;
 	}
 
 	public String getFilename() {
