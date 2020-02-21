@@ -12,5 +12,5 @@ Predmetni projekat podrazumevao je razvoj samostalne web aplikacije koja simulir
 **Tehnologije:**
 
 * Angular 6
-* Spring Boot 2.2.0 Release
-* ElasticSearch
+* Spring Boot 2.1.0 Release
+* ElasticSearch v5.6.16 sa SerbianAnalyzer-om
