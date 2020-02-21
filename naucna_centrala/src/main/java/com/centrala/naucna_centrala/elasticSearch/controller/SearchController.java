@@ -8,6 +8,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletResponse;
 
+import com.centrala.naucna_centrala.DTO.NaprednaPretragaDTO;
 import com.centrala.naucna_centrala.DTO.Naucni_radDTO;
 import com.centrala.naucna_centrala.DTO.PretragaDTO;
 import com.centrala.naucna_centrala.elasticSearch.model.*;
@@ -15,10 +16,12 @@ import com.centrala.naucna_centrala.elasticSearch.repository.BookRepository;
 import com.centrala.naucna_centrala.service.Korisnik_service;
 import org.apache.lucene.queryparser.classic.ParseException;
 import org.elasticsearch.action.get.GetRequestBuilder;
+import org.elasticsearch.action.get.MultiGetRequest;
 import org.elasticsearch.action.search.SearchRequestBuilder;
 import org.elasticsearch.action.search.SearchResponse;
 import org.elasticsearch.client.Client;
 import org.elasticsearch.index.query.BoolQueryBuilder;
+import org.elasticsearch.index.query.MoreLikeThisQueryBuilder;
 import org.elasticsearch.index.query.QueryBuilders;
 import org.elasticsearch.search.fetch.subphase.highlight.HighlightBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,61 +47,39 @@ public class SearchController {
 		
 		@Autowired
 		private BookRepository elasticRepository;
-		
-		private HighlightBuilder highlightBuilder = new HighlightBuilder()
-		.preTags("<mark>")
-		.postTags("</mark>")
-	    .field("sadrzaj", 50)
-	    .field("naslovRada", 50)
-	    .field("autor", 50)
-	    .field("apstrakt", 50)
-	    .field("kljucniPojmovi", 50)
-	    .field("nazivCasopisa", 50)
-	    .field("nazivNaucneOblasti", 50);
 
 	public SearchController() throws UnknownHostException {
 	}
 
 	@PostMapping(value="/term", consumes="application/json")
 		public ResponseEntity<List<ResultData>> searchTermQuery(@RequestBody PretragaDTO searchDTO) throws Exception {
-
 		SimpleQuery simpleQuery = new SimpleQuery();
 		simpleQuery.setField(searchDTO.getKriterijum());
-		//System.out.println("Upit: " + searchDTO.getUpit());
 		simpleQuery.setValue(searchDTO.getUpit());
 		org.elasticsearch.index.query.QueryBuilder query= QueryBuilder.buildQuery(SearchType.phrase, simpleQuery.getField(), simpleQuery.getValue());
 		List<RequiredHighlight> rh = new ArrayList<RequiredHighlight>();
-		rh.add(new RequiredHighlight(simpleQuery.getField(), simpleQuery.getValue()));
 		List<ResultData> results = resultRetriever.getResults(query, rh);
 		return new ResponseEntity<List<ResultData>>(results, HttpStatus.OK);
 		}
 
-		/*@PostMapping(value="/search/fuzzy", consumes="application/json")
-		public ResponseEntity<List<ResultData>> searchFuzzy(@RequestBody SimpleQuery simpleQuery) throws Exception {
-			org.elasticsearch.index.query.QueryBuilder query= QueryBuilder.buildQuery(SearchType.fuzzy, simpleQuery.getField(), simpleQuery.getValue());
-			List<RequiredHighlight> rh = new ArrayList<RequiredHighlight>();
-			rh.add(new RequiredHighlight(simpleQuery.getField(), simpleQuery.getValue()));
-			//List<ResultData> results = resultRetriever.getResults(query, rh);
-			return new ResponseEntity<List<ResultData>>(results, HttpStatus.OK);
-		}
-
-		@PostMapping(value="/search/prefix", consumes="application/json")
-		public ResponseEntity<List<ResultData>> searchPrefix(@RequestBody SimpleQuery simpleQuery) throws Exception {
-			org.elasticsearch.index.query.QueryBuilder query= QueryBuilder.buildQuery(SearchType.prefix, simpleQuery.getField(), simpleQuery.getValue());
-			List<RequiredHighlight> rh = new ArrayList<RequiredHighlight>();
-			rh.add(new RequiredHighlight(simpleQuery.getField(), simpleQuery.getValue()));
-			List<ResultData> results = resultRetriever.getResults(query, rh);
-			return new ResponseEntity<List<ResultData>>(results, HttpStatus.OK);
-		}
-
-		@PostMapping(value="/search/range", consumes="application/json")
-		public ResponseEntity<List<ResultData>> searchRange(@RequestBody SimpleQuery simpleQuery) throws Exception {
-			org.elasticsearch.index.query.QueryBuilder query= QueryBuilder.buildQuery(SearchType.range, simpleQuery.getField(), simpleQuery.getValue());
-			List<RequiredHighlight> rh = new ArrayList<RequiredHighlight>();
-			rh.add(new RequiredHighlight(simpleQuery.getField(), simpleQuery.getValue()));
-			List<ResultData> results = resultRetriever.getResults(query, rh);
-			return new ResponseEntity<List<ResultData>>(results, HttpStatus.OK);
-		}*/
+//	@PostMapping(value="/term", consumes="application/json")
+//	public ResponseEntity<List<ResultData>> searchTermQuery(@RequestBody PretragaDTO searchDTO) throws Exception {
+//		SimpleQuery simpleQuery = new SimpleQuery();
+//		simpleQuery.setField(searchDTO.getKriterijum());
+//		simpleQuery.setValue(searchDTO.getUpit());
+//		//org.elasticsearch.index.query.QueryBuilder query= QueryBuilders.termQuery(simpleQuery.getField(), simpleQuery.getValue());
+//		org.elasticsearch.index.query.QueryBuilder query= QueryBuilder.buildQuery(SearchType.regular, simpleQuery.getField(), simpleQuery.getValue());
+//		List<RequiredHighlight> rh = new ArrayList<RequiredHighlight>();
+////		rh.add(new RequiredHighlight(simpleQuery.getField(), simpleQuery.getValue()));
+//		highlightBuilder.highlightQuery(query);
+//		SearchRequestBuilder request = nodeClient.prepareSearch("libraryserbian")
+//				.setQuery(query)
+//				.highlighter(highlightBuilder);
+//		SearchResponse response = request.get();
+//		System.out.println(response.toString());
+//		List<ResultData> results = resultRetriever.getResults(query, rh);
+//		return new ResponseEntity<List<ResultData>>(results, HttpStatus.OK);
+//	}
 
 		@PostMapping(value="/search/phrase", consumes="application/json")
 		public ResponseEntity<List<Naucni_radDTO>> searchPhrase(@RequestBody PretragaDTO searchDTO) throws Exception {
@@ -110,177 +91,144 @@ public class SearchController {
 
 			List<Naucni_radDTO> results = new ArrayList<>();
 
-	        highlightBuilder.highlightQuery(query);
-
 	        SearchRequestBuilder request = nodeClient.prepareSearch("libraryserbian")
-	                .setQuery(query)
-	                .highlighter(highlightBuilder);
+	                .setQuery(query);
 	        SearchResponse response = request.get();
 	        System.out.println(response.toString());
 	        results = resultRetriever.getResponse(response);
 			return new ResponseEntity<List<Naucni_radDTO>>(results, HttpStatus.OK);
 		}
 
-		@PostMapping(value="/search/withoutCriteria", consumes="application/json")
-		public ResponseEntity<List<Naucni_radDTO>> searchAllFields(@RequestBody PretragaDTO searchDTO) throws Exception {
+		@PostMapping(value="/poSvimPoljima", consumes="application/json")
+		public ResponseEntity<List<ResultData>> pretragaSvihPolja(@RequestBody PretragaDTO searchDTO) throws Exception {
 			SimpleQuery simpleQuery = new SimpleQuery();
 			if(searchDTO.getKriterijum().equals("")) {
 				simpleQuery.setValue(searchDTO.getUpit());
 			}
-			org.elasticsearch.index.query.QueryBuilder query= QueryBuilders.queryStringQuery(simpleQuery.getValue());
-			List<Naucni_radDTO> results = new ArrayList<>();
-
-	        highlightBuilder.highlightQuery(query);
-
-	        SearchRequestBuilder request = nodeClient.prepareSearch("libraryserbian")
-	                .setQuery(query)
-	                .highlighter(highlightBuilder);
-	        SearchResponse response = request.get();
-	        System.out.println(response.toString());
-	        results = resultRetriever.getResponse(response);		
-			return new ResponseEntity<List<Naucni_radDTO>>(results, HttpStatus.OK);
+			org.elasticsearch.index.query.QueryBuilder query = QueryBuilders.queryStringQuery(simpleQuery.getValue());
+			List<RequiredHighlight> rh = new ArrayList<RequiredHighlight>();
+			rh.add(new RequiredHighlight(simpleQuery.getField(), simpleQuery.getValue()));
+			List<ResultData> results = resultRetriever.getResults(query, rh);
+			return new ResponseEntity<List<ResultData>>(results, HttpStatus.OK);
 		}
-		
-		@PostMapping(value="/search/boolean", consumes="application/json")
-		public ResponseEntity<List<Naucni_radDTO>> searchBoolean(@RequestBody PretragaDTO searchDTO) throws Exception {
-			BoolQueryBuilder builder = QueryBuilders.boolQuery();
-			String query = searchDTO.getUpit();
-			if(query.contains("AND") && !query.contains("OR")){
-				String[] parsedQueryByAnd = query.split("AND");
-				builder = buildBooleanForAnd(parsedQueryByAnd);
-			}else if(query.contains("OR") && !query.contains("AND")){
-				String[] parsedQueryByOr = query.split("OR");
-				builder = buildBooleanForOr(parsedQueryByOr);
-			}
-			
-			List<Naucni_radDTO> results = new ArrayList<>();
 
-	        highlightBuilder.highlightQuery(builder);
-
-	        SearchRequestBuilder request = nodeClient.prepareSearch("libraryserbian")
-	                .setQuery(builder)
-	                .highlighter(highlightBuilder);
-	        SearchResponse response = request.get();
-	        System.out.println(response.toString());
-	        results = resultRetriever.getResponse(response);	
-			return new ResponseEntity<List<Naucni_radDTO>>(results, HttpStatus.OK);
-		}
-		private BoolQueryBuilder buildBooleanForAnd(String[] querySplittedByAnd) throws IllegalArgumentException, ParseException{
-			BoolQueryBuilder builder = QueryBuilders.boolQuery();
-			org.elasticsearch.index.query.QueryBuilder query = null;
-			for(int i = 0; i < querySplittedByAnd.length; i++){
-				
-					String[] gettingFieldAndValue = querySplittedByAnd[i].split(":");
-					String field = gettingFieldAndValue[0].trim();
-					String value = gettingFieldAndValue[1].trim();
-					query = QueryBuilder.buildQuery(SearchType.regular, field, value);
-					builder.must(query);
-
-			}
-			
-			return builder;
-		}
-		private BoolQueryBuilder buildBooleanForOr(String[] querySplittedByOr) throws IllegalArgumentException, ParseException{
-			BoolQueryBuilder builder = QueryBuilders.boolQuery();
-			org.elasticsearch.index.query.QueryBuilder query = null;
-			for(int i = 0; i < querySplittedByOr.length; i++){
-				String[] gettingFieldAndValue = querySplittedByOr[i].split(":");
-				String field = gettingFieldAndValue[0].trim();
-				String value = gettingFieldAndValue[1].trim();
-				query = QueryBuilder.buildQuery(SearchType.regular, field, value);
-				builder.should(query);
-			}
-			
-			return builder;
-		}
-		
-		@PostMapping(value="/search/queryParser", consumes="application/json")
-		public ResponseEntity<List<Naucni_radDTO>> search(@RequestBody PretragaDTO searchDTO) throws Exception {
+		@PostMapping(value="/all", consumes="application/json")
+		public ResponseEntity<List<ResultData>> sviDokumenti(@RequestBody PretragaDTO searchDTO) throws Exception {
 			SimpleQuery simpleQuery = new SimpleQuery();
-			String kriterijum = "";
-			if(searchDTO.getKriterijum().equals("")) {
-				simpleQuery.setValue(searchDTO.getUpit());
-			}else{
-				kriterijum = searchDTO.getKriterijum();
-				simpleQuery.setField(kriterijum);
+			if(searchDTO.getKriterijum().equals("") && searchDTO.getUpit().equals("")) {
+				simpleQuery.setField(searchDTO.getKriterijum());
 				simpleQuery.setValue(searchDTO.getUpit());
 			}
-			org.elasticsearch.index.query.QueryBuilder query=QueryBuilders.matchQuery(simpleQuery.getField(), simpleQuery.getValue());
-			List<Naucni_radDTO> results = new ArrayList<>();
-
-	        highlightBuilder.highlightQuery(query);
-
-	        SearchRequestBuilder request = nodeClient.prepareSearch("libraryserbian")
-	                .setQuery(query)
-	                .highlighter(highlightBuilder);
-	        SearchResponse response = request.get();
-	        System.out.println(response.toString());
-	        results = resultRetriever.getResponse(response);
-			
-			return new ResponseEntity<List<Naucni_radDTO>>(results, HttpStatus.OK);
+			org.elasticsearch.index.query.QueryBuilder query = QueryBuilders.matchAllQuery();
+			List<RequiredHighlight> rh = new ArrayList<RequiredHighlight>();
+			rh.add(new RequiredHighlight(simpleQuery.getField(), simpleQuery.getValue()));
+			List<ResultData> results = resultRetriever.getResults(query, rh);
+			return new ResponseEntity<List<ResultData>>(results, HttpStatus.OK);
 		}
-		
+
+		@PostMapping(value="/booleanQuery")
+		public ResponseEntity<List<ResultData>> booleanQuery(@RequestBody NaprednaPretragaDTO npDTO){
+			List<org.elasticsearch.index.query.QueryBuilder> listQuery = new ArrayList<>();
+
+			if(!npDTO.getVrednost1().equals(""))
+			{
+				org.elasticsearch.index.query.QueryBuilder query = QueryBuilders.matchQuery(npDTO.getKriterijum1(), npDTO.getVrednost1());
+				listQuery.add(query);
+			}
+			if(!npDTO.getVrednost2().equals(""))
+			{
+				org.elasticsearch.index.query.QueryBuilder query1 = QueryBuilders.matchQuery(npDTO.getKriterijum2(), npDTO.getVrednost2());
+				listQuery.add(query1);
+			}
+			if(!npDTO.getVrednost3().equals(""))
+			{
+				org.elasticsearch.index.query.QueryBuilder query2 = QueryBuilders.matchQuery(npDTO.getKriterijum3(), npDTO.getVrednost3());
+				listQuery.add(query2);
+			}
+			if(!npDTO.getVrednost4().equals(""))
+			{
+				org.elasticsearch.index.query.QueryBuilder query3 = QueryBuilders.matchQuery(npDTO.getKriterijum4(), npDTO.getVrednost4());
+				listQuery.add(query3);
+			}
+			if(!npDTO.getVrednost5().equals(""))
+			{
+				org.elasticsearch.index.query.QueryBuilder query4 = QueryBuilders.matchQuery(npDTO.getKriterijum5(), npDTO.getVrednost5());
+				listQuery.add(query4);
+			}
+			if(!npDTO.getVrednost6().equals(""))
+			{
+				org.elasticsearch.index.query.QueryBuilder query5 = QueryBuilders.matchQuery(npDTO.getKriterijum6(), npDTO.getVrednost6());
+				listQuery.add(query5);
+			}
+
+			BoolQueryBuilder builder = QueryBuilders.boolQuery();
+			if(npDTO.getOperator().equalsIgnoreCase("AND"))
+			{
+				for(int i=0;i<listQuery.size();i++)
+				{
+					builder.must(listQuery.get(i));
+				}
+			}else if(npDTO.getOperator().equalsIgnoreCase("OR"))
+			{
+				for(int i=0;i<listQuery.size();i++)
+				{
+					builder.should(listQuery.get(i));
+				}
+			}
+			List<RequiredHighlight> rh = new ArrayList<RequiredHighlight>();
+			List<ResultData> results = resultRetriever.getResults(builder, rh);
+			return new ResponseEntity<List<ResultData>>(results, HttpStatus.OK);
+		}
+
+		@PostMapping(value="/moreLike")
+		public ResponseEntity<List<ResultData>> moreLikePretraga(@RequestBody PretragaDTO pretragaDTO) throws ParseException {
+			String[] kriterijum = {"naslovRada",
+					"autor","kljucniPojmovi","nazivCasopisa","nazivNaucneOblasti","sadrzaj"};
+			String[] text = {pretragaDTO.getUpit()};
+
+			org.elasticsearch.index.query.MoreLikeThisQueryBuilder.Item[] item = {new MoreLikeThisQueryBuilder.Item("libraryserbian", "radovi", "filename")};
+			org.elasticsearch.index.query.QueryBuilder query= QueryBuilders.moreLikeThisQuery(kriterijum,text,item)
+					.minTermFreq(1).maxQueryTerms(50).minDocFreq(1);
+			System.out.println("More like this: " + query);
+			List<RequiredHighlight> rh = new ArrayList<RequiredHighlight>();
+			List<ResultData> results = resultRetriever.getResults(query, rh);
+			return new ResponseEntity<List<ResultData>>(results, HttpStatus.OK);
+		}
+//		@PostMapping(value="/search/queryParser", consumes="application/json")
+//		public ResponseEntity<List<Naucni_radDTO>> search(@RequestBody PretragaDTO searchDTO) throws Exception {
+//			SimpleQuery simpleQuery = new SimpleQuery();
+//			String kriterijum = "";
+//			if(searchDTO.getKriterijum().equals("")) {
+//				simpleQuery.setValue(searchDTO.getUpit());
+//			}else{
+//				kriterijum = searchDTO.getKriterijum();
+//				simpleQuery.setField(kriterijum);
+//				simpleQuery.setValue(searchDTO.getUpit());
+//			}
+//			org.elasticsearch.index.query.QueryBuilder query=QueryBuilders.matchQuery(simpleQuery.getField(), simpleQuery.getValue());
+//			List<Naucni_radDTO> results = new ArrayList<>();
+//
+//	        highlightBuilder.highlightQuery(query);
+//
+//	        SearchRequestBuilder request = nodeClient.prepareSearch("libraryserbian")
+//	                .setQuery(query)
+//	                .highlighter(highlightBuilder);
+//	        SearchResponse response = request.get();
+//	        System.out.println(response.toString());
+//	        results = resultRetriever.getResponse(response);
+//
+//			return new ResponseEntity<List<Naucni_radDTO>>(results, HttpStatus.OK);
+//		}
+
 		/*@GetMapping(value="/search/geo")
 		public ResponseEntity<List<Naucni_radDTO>> geoSearch() throws Exception {
 			Korisnik k = korisnikService.findOne(9L);
 			GeoDistanceQueryBuilder qb = new GeoDistanceQueryBuilder("geo_point");
-			
+
 			qb.point(k.getLattitude(), k.getLongitude()).distance(200, DistanceUnit.KILOMETERS);
 			List<RequiredHighlight> rh = new ArrayList<RequiredHighlight>();
-			
+
 			List<Naucni_radDTO> results = resultRetriever.getResults(qb, rh);
 			return new ResponseEntity<List<Naucni_radDTO>>(results, HttpStatus.OK);
 		}*/
-		
-		@PostMapping(value="/search/download")
-		public void downloadPDF(@RequestBody Naucni_radDTO rad, HttpServletResponse response) throws Exception {
-			System.out.println(rad.getNaslov());
-			/*List<IndexUnit> radFoundByNaslov = elasticRepository.findByNaslovRada(rad.getNaslov());
-			String filePath = radFoundByNaslov.get(0).getFilename();
-			ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
-		//OutputStream outputStream = null;
-		InputStream in = null;
-
-	        try {
-	            in = new FileInputStream(filePath); // I assume files are at /tmp
-	            byte[] buffer = new byte[1024];
-	            int bytesRead = 0;
-	            response.setHeader(
-	                "Content-Disposition",
-	                "attachment;filename=file.pdf");
-	            
-	          //  outputStream = response.getOutputStream();
-	            while( 0 < ( bytesRead = in.read( buffer ) ) )
-	            {
-	            	outputStream.write( buffer, 0, bytesRead );
-	            }
-	            download(outputStream.toByteArray(), "C:/Users/Alexandar/Desktop/" + rad.getNaslov() + ".pdf");
-	        }   
-	        finally
-	        {
-	            if ( null != in )
-	            {
-	                in.close();
-	            }
-	        }*/
-		}
-		
-		private void download(byte[] content, String dest){
-			FileOutputStream fos = null;
-			
-			try{
-				fos = new FileOutputStream(dest);
-				fos.write(content);
-			}catch(IOException e){
-				e.printStackTrace();
-			}finally{
-				if(fos!=null){
-					try{
-						fos.close();
-					}catch(IOException e){
-						e.printStackTrace();
-					}
-				}
-			}
-		}
 }

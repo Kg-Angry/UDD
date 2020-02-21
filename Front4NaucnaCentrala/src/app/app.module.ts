@@ -17,6 +17,8 @@ import {MatSelectModule} from '@angular/material/select';
 import { PretragaElasticComponent } from './pretraga-elastic/pretraga-elastic.component';
 import {MatInputModule} from '@angular/material/input';
 import {MatExpansionModule} from '@angular/material/expansion';
+import { SafePipe } from './safe.pipe';
+import {MatCheckboxModule} from '@angular/material/checkbox';
 
 @NgModule({
   declarations: [
@@ -28,7 +30,8 @@ import {MatExpansionModule} from '@angular/material/expansion';
     NaucnaOblastComponent,
     NaucniRadoviComponent,
     UserProfileComponent,
-    PretragaElasticComponent
+    PretragaElasticComponent,
+    SafePipe
   ],
   imports: [
     BrowserModule,
@@ -40,6 +43,7 @@ import {MatExpansionModule} from '@angular/material/expansion';
     MatSelectModule,
     MatInputModule,
     MatExpansionModule,
+    MatCheckboxModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

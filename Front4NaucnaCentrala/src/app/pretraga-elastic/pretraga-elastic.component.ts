@@ -2,6 +2,7 @@ import { NaucniCasopis } from './../class/naucni-casopis';
 import { ResultRetriever } from './../class/result-retriever';
 import { PretragaElasticService } from './pretraga-elastic.service';
 import { Component, OnInit } from '@angular/core';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-pretraga-elastic',
@@ -10,9 +11,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PretragaElasticComponent implements OnInit {
 
-  kriterijumPretrage: String;
+  kriterijumPretrage: String = '';
   rezultat: ResultRetriever[] = JSON.parse(localStorage.getItem('document'));
   casopisi: NaucniCasopis[] = JSON.parse(localStorage.getItem('casopisi'));
+  AndOr: String = '';
+  MoreLike = false;
 
   constructor(private pretragaService: PretragaElasticService) { }
 
@@ -22,15 +25,24 @@ export class PretragaElasticComponent implements OnInit {
   PretragaPoPoljima(event){
     event.preventDefault();
     const target = event.target;
-    this.pretragaService.pretraziTermove(target, this.kriterijumPretrage);
+    if(this.MoreLike === false){
+      this.pretragaService.pretraziTermove(target, this.kriterijumPretrage);
+    } else{
+      this.pretragaService.moreLikeThisPretraga(target);
+    }
+
   }
 
   Preuzmi(naslovRada: String){
-    console.log('Preuzimanje');
     this.pretragaService.preuzmiRad(naslovRada);
   }
   Kupi(naslovRada: String){
     this.pretragaService.kupiRad();
+  }
+  Proba($event){
+    event.preventDefault();
+    const target = event.target;
+    this.pretragaService.naprednaPretraga(target, this.AndOr);
   }
 
 }

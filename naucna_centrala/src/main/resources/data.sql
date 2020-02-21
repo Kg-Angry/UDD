@@ -3,7 +3,7 @@ insert into korisnik(aktiviran_nalog,drzava,email,grad,ime,korisnicko_ime,lozink
 values (1,"Srbija","alex@gmail.com","Kragujevac","Aleksa","kgangry","kgangry","Vasic","UREDNIK","");
 
 insert into korisnik(aktiviran_nalog,drzava,email,grad,ime,korisnicko_ime,lozinka, prezime,tip_korisnika,titula)
-values (1,"Srbija","alex@gmail.com","Kragujevac","Aleksa","kgangry","kgangry","Vasic","AUTOR","");
+values (1,"Srbija","alex@gmail.com","Kragujevac","Mirko","autor","autor","Markovic","AUTOR","");
 
 insert into korisnik(aktiviran_nalog,drzava,email,grad,ime,korisnicko_ime,lozinka, prezime,tip_korisnika,titula)
 values (1,"Srbija","alex@gmail.com","Kragujevac","A","admin","admin","V","ADMINISTRATOR","");
