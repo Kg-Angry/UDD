@@ -12,7 +12,7 @@ export class NaucniRadoviService {
 
   constructor(private http: HttpClient, private homeService: HomeService) { }
 
-  kreirajRad(target, koAutori, IzabranaNaucnaOblastRada, selektovaniFajl: File, IzabraniNaucniCasopis, korisnik) {
+  kreirajRad(target, koAutori, IzabranaNaucnaOblastRada, selektovaniFajl: File, IzabraniNaucniCasopis, korisnik, recenzentiCasopisa) {
     const nazivRada = target.querySelector('input[name=\'nazivRada\']').value;
     const kljucniPojmovi = target.querySelector('input[name=\'kljucni_pojmovi\']').value;
     const apstrakt = target.querySelector('textarea[name=\'apstrakt\']').value;
@@ -20,7 +20,7 @@ export class NaucniRadoviService {
 
     return this.http.post('api/naucni_rad/kreiraj', {naslov: nazivRada, koautori: koautor,
        kljucni_pojmovi: kljucniPojmovi, apstrakt: apstrakt, oblast_pripadanja: IzabranaNaucnaOblastRada, putanja_upload_fajla: ' ',
-       naucni_casopis: IzabraniNaucniCasopis, autor: korisnik}).
+       naucni_casopis: IzabraniNaucniCasopis, autor: korisnik, recenzenti: recenzentiCasopisa}).
     subscribe(data => {Swal.fire({
       position: 'top-end',
       icon: 'success',

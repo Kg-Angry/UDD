@@ -52,6 +52,7 @@ export class UserProfileComponent implements OnInit {
   selectUploadFile: File = null;
   IzabraniNaucniCasopis: NaucniCasopis = new NaucniCasopis();
   IzabaniTipoviPlacanja: TipPlacanja[] = [];
+  RecenzentiCasopisa: Korisnik[]=[];
 
   constructor(private userService: UserProfileService, private noService: NaucnaOblastService, private ncService: NaucniCasopisService
     , private nrService: NaucniRadoviService, private regService: RegistrationService) { }
@@ -143,7 +144,7 @@ export class UserProfileComponent implements OnInit {
     event.preventDefault();
     const target = event.target;
 
-    this.nrService.kreirajRad(target, this.koAutori, this.IzabranaNaucnaOblastRada, this.selectUploadFile, this.IzabraniNaucniCasopis, this.korisnik);
+    this.nrService.kreirajRad(target, this.koAutori, this.IzabranaNaucnaOblastRada, this.selectUploadFile, this.IzabraniNaucniCasopis, this.korisnik, this.RecenzentiCasopisa);
   }
   SelectFile(event) {
     this.selectUploadFile = event.target.files[0];

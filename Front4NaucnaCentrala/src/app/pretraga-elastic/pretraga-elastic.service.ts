@@ -87,11 +87,9 @@ export class PretragaElasticService {
     }
   }
 
-  moreLikeThisPretraga(target){
+  moreLikeThisPretraga(naslovRada){
 
-    const vrednost = target.querySelector('input[name=\'term\']').value;
-
-    return this.http.post('api/pretraga/moreLike', {upit: vrednost}).subscribe((data: ResultRetriever) =>
+    return this.http.post('api/pretraga/moreLike', {upit: naslovRada}).subscribe((data: ResultRetriever) =>
     {localStorage.setItem('document', JSON.stringify(data)); location.href = '/search'});
   }
 

@@ -471,3 +471,469 @@ Caused by: org.elasticsearch.transport.TransportException: TransportService is c
 [2020-02-24T17:01:27,919][INFO ][o.e.c.m.MetaDataCreateIndexService] [_client_] [libraryserbian] creating index, cause [api], templates [], shards [1]/[0], mappings []
 [2020-02-24T17:01:29,832][INFO ][o.e.c.r.a.AllocationService] [_client_] Cluster health status changed from [YELLOW] to [GREEN] (reason: [shards started [[libraryserbian][0]] ...]).
 [2020-02-24T17:01:30,307][INFO ][o.e.c.m.MetaDataMappingService] [_client_] [libraryserbian/G9obz220RP2nXXLmsuWsSw] create_mapping [radovi]
+[2020-02-24T20:01:36,922][INFO ][o.e.n.Node               ] [_client_] stopping ...
+[2020-02-24T20:01:37,034][INFO ][o.e.n.Node               ] [_client_] stopped
+[2020-02-24T20:01:37,035][INFO ][o.e.n.Node               ] [_client_] closing ...
+[2020-02-24T20:01:37,073][INFO ][o.e.n.Node               ] [_client_] closed
+[2020-02-24T20:02:49,300][INFO ][o.e.n.Node               ] [_client_] initializing ...
+[2020-02-24T20:02:50,063][INFO ][o.e.e.NodeEnvironment    ] [_client_] using [1] data paths, mounts [[(C:)]], net usable_space [235.4gb], net total_space [334gb], spins? [unknown], types [NTFS]
+[2020-02-24T20:02:50,064][INFO ][o.e.e.NodeEnvironment    ] [_client_] heap size [1.9gb], compressed ordinary object pointers [true]
+[2020-02-24T20:02:50,071][INFO ][o.e.n.Node               ] [_client_] node name [_client_], node ID [8C2ilApnTXm8f0gyfw94Ew]
+[2020-02-24T20:02:50,073][INFO ][o.e.n.Node               ] [_client_] version[5.6.16], pid[9392], build[3a740d1/2019-03-13T15:33:36.565Z], OS[Windows 10/10.0/amd64], JVM[Oracle Corporation/Java HotSpot(TM) 64-Bit Server VM/1.8.0_221/25.221-b11]
+[2020-02-24T20:02:50,073][INFO ][o.e.n.Node               ] [_client_] JVM arguments [-Xms2g, -Xmx2g, -XX:+UseConcMarkSweepGC, -XX:CMSInitiatingOccupancyFraction=75, -XX:+UseCMSInitiatingOccupancyOnly, -XX:+AlwaysPreTouch, -Xss1m, -Djava.awt.headless=true, -Dfile.encoding=UTF-8, -Djna.nosys=true, -Djdk.io.permissionsUseCanonicalPath=true, -Dio.netty.noUnsafe=true, -Dio.netty.noKeySetOptimization=true, -Dio.netty.recycler.maxCapacityPerThread=0, -Dlog4j.shutdownHookEnabled=false, -Dlog4j2.disable.jmx=true, -Dlog4j.skipJansi=true, -XX:+HeapDumpOnOutOfMemoryError, -Delasticsearch, -Des.path.home=C:\Users\Alexandar\Documents\MASTER\1_semestar\UDD\elasticsearch-5.6.16]
+[2020-02-24T20:02:57,454][INFO ][o.e.p.PluginsService     ] [_client_] loaded module [aggs-matrix-stats]
+[2020-02-24T20:02:57,454][INFO ][o.e.p.PluginsService     ] [_client_] loaded module [ingest-common]
+[2020-02-24T20:02:57,455][INFO ][o.e.p.PluginsService     ] [_client_] loaded module [lang-expression]
+[2020-02-24T20:02:57,456][INFO ][o.e.p.PluginsService     ] [_client_] loaded module [lang-groovy]
+[2020-02-24T20:02:57,456][INFO ][o.e.p.PluginsService     ] [_client_] loaded module [lang-mustache]
+[2020-02-24T20:02:57,457][INFO ][o.e.p.PluginsService     ] [_client_] loaded module [lang-painless]
+[2020-02-24T20:02:57,457][INFO ][o.e.p.PluginsService     ] [_client_] loaded module [parent-join]
+[2020-02-24T20:02:57,458][INFO ][o.e.p.PluginsService     ] [_client_] loaded module [percolator]
+[2020-02-24T20:02:57,458][INFO ][o.e.p.PluginsService     ] [_client_] loaded module [reindex]
+[2020-02-24T20:02:57,459][INFO ][o.e.p.PluginsService     ] [_client_] loaded module [transport-netty3]
+[2020-02-24T20:02:57,459][INFO ][o.e.p.PluginsService     ] [_client_] loaded module [transport-netty4]
+[2020-02-24T20:02:57,460][INFO ][o.e.p.PluginsService     ] [_client_] loaded plugin [serbian-plugin]
+[2020-02-24T20:03:01,598][INFO ][o.e.d.DiscoveryModule    ] [_client_] using discovery type [zen]
+[2020-02-24T20:03:03,511][INFO ][o.e.n.Node               ] [_client_] initialized
+[2020-02-24T20:03:03,513][INFO ][o.e.n.Node               ] [_client_] starting ...
+[2020-02-24T20:03:06,876][INFO ][o.e.t.TransportService   ] [_client_] publish_address {127.0.0.1:9300}, bound_addresses {127.0.0.1:9300}, {[::1]:9300}
+[2020-02-24T20:03:09,968][INFO ][o.e.c.s.ClusterService   ] [_client_] new_master {_client_}{8C2ilApnTXm8f0gyfw94Ew}{17PyPIVJRgaVmB76IJhriA}{127.0.0.1}{127.0.0.1:9300}, reason: zen-disco-elected-as-master ([0] nodes joined)
+[2020-02-24T20:03:10,016][INFO ][o.e.g.GatewayService     ] [_client_] recovered [0] indices into cluster_state
+[2020-02-24T20:03:11,623][INFO ][o.e.h.n.Netty4HttpServerTransport] [_client_] publish_address {127.0.0.1:9200}, bound_addresses {127.0.0.1:9200}, {[::1]:9200}
+[2020-02-24T20:03:11,624][INFO ][o.e.n.Node               ] [_client_] started
+[2020-02-24T20:03:35,906][INFO ][o.e.c.m.MetaDataCreateIndexService] [_client_] [libraryserbian] creating index, cause [api], templates [], shards [1]/[0], mappings []
+[2020-02-24T20:03:36,296][INFO ][o.e.c.r.a.AllocationService] [_client_] Cluster health status changed from [YELLOW] to [GREEN] (reason: [shards started [[libraryserbian][0]] ...]).
+[2020-02-24T20:03:36,487][INFO ][o.e.c.m.MetaDataMappingService] [_client_] [libraryserbian/1Y9VFyttTjSuai1DyqcmpQ] create_mapping [radovi]
+[2020-02-24T20:05:16,115][INFO ][o.e.n.Node               ] [_client_] stopping ...
+[2020-02-24T20:05:16,204][INFO ][o.e.n.Node               ] [_client_] stopped
+[2020-02-24T20:05:16,205][INFO ][o.e.n.Node               ] [_client_] closing ...
+[2020-02-24T20:05:16,226][INFO ][o.e.n.Node               ] [_client_] closed
+[2020-02-24T20:06:34,367][INFO ][o.e.n.Node               ] [_client_] initializing ...
+[2020-02-24T20:06:35,103][INFO ][o.e.e.NodeEnvironment    ] [_client_] using [1] data paths, mounts [[(C:)]], net usable_space [235.4gb], net total_space [334gb], spins? [unknown], types [NTFS]
+[2020-02-24T20:06:35,104][INFO ][o.e.e.NodeEnvironment    ] [_client_] heap size [1.9gb], compressed ordinary object pointers [true]
+[2020-02-24T20:06:35,110][INFO ][o.e.n.Node               ] [_client_] node name [_client_], node ID [vOAc_LefSO2ilrx5rcsNoA]
+[2020-02-24T20:06:35,111][INFO ][o.e.n.Node               ] [_client_] version[5.6.16], pid[12744], build[3a740d1/2019-03-13T15:33:36.565Z], OS[Windows 10/10.0/amd64], JVM[Oracle Corporation/Java HotSpot(TM) 64-Bit Server VM/1.8.0_221/25.221-b11]
+[2020-02-24T20:06:35,112][INFO ][o.e.n.Node               ] [_client_] JVM arguments [-Xms2g, -Xmx2g, -XX:+UseConcMarkSweepGC, -XX:CMSInitiatingOccupancyFraction=75, -XX:+UseCMSInitiatingOccupancyOnly, -XX:+AlwaysPreTouch, -Xss1m, -Djava.awt.headless=true, -Dfile.encoding=UTF-8, -Djna.nosys=true, -Djdk.io.permissionsUseCanonicalPath=true, -Dio.netty.noUnsafe=true, -Dio.netty.noKeySetOptimization=true, -Dio.netty.recycler.maxCapacityPerThread=0, -Dlog4j.shutdownHookEnabled=false, -Dlog4j2.disable.jmx=true, -Dlog4j.skipJansi=true, -XX:+HeapDumpOnOutOfMemoryError, -Delasticsearch, -Des.path.home=C:\Users\Alexandar\Documents\MASTER\1_semestar\UDD\elasticsearch-5.6.16]
+[2020-02-24T20:06:40,103][INFO ][o.e.p.PluginsService     ] [_client_] loaded module [aggs-matrix-stats]
+[2020-02-24T20:06:40,103][INFO ][o.e.p.PluginsService     ] [_client_] loaded module [ingest-common]
+[2020-02-24T20:06:40,118][INFO ][o.e.p.PluginsService     ] [_client_] loaded module [lang-expression]
+[2020-02-24T20:06:40,118][INFO ][o.e.p.PluginsService     ] [_client_] loaded module [lang-groovy]
+[2020-02-24T20:06:40,134][INFO ][o.e.p.PluginsService     ] [_client_] loaded module [lang-mustache]
+[2020-02-24T20:06:40,134][INFO ][o.e.p.PluginsService     ] [_client_] loaded module [lang-painless]
+[2020-02-24T20:06:40,134][INFO ][o.e.p.PluginsService     ] [_client_] loaded module [parent-join]
+[2020-02-24T20:06:40,134][INFO ][o.e.p.PluginsService     ] [_client_] loaded module [percolator]
+[2020-02-24T20:06:40,134][INFO ][o.e.p.PluginsService     ] [_client_] loaded module [reindex]
+[2020-02-24T20:06:40,134][INFO ][o.e.p.PluginsService     ] [_client_] loaded module [transport-netty3]
+[2020-02-24T20:06:40,134][INFO ][o.e.p.PluginsService     ] [_client_] loaded module [transport-netty4]
+[2020-02-24T20:06:40,134][INFO ][o.e.p.PluginsService     ] [_client_] loaded plugin [serbian-plugin]
+[2020-02-24T20:06:44,101][INFO ][o.e.d.DiscoveryModule    ] [_client_] using discovery type [zen]
+[2020-02-24T20:06:44,981][INFO ][o.e.n.Node               ] [_client_] initialized
+[2020-02-24T20:06:44,982][INFO ][o.e.n.Node               ] [_client_] starting ...
+[2020-02-24T20:06:48,339][INFO ][o.e.t.TransportService   ] [_client_] publish_address {127.0.0.1:9300}, bound_addresses {127.0.0.1:9300}, {[::1]:9300}
+[2020-02-24T20:06:51,420][INFO ][o.e.c.s.ClusterService   ] [_client_] new_master {_client_}{vOAc_LefSO2ilrx5rcsNoA}{TBCn6w_ETGyt6K7P0O9WqA}{127.0.0.1}{127.0.0.1:9300}, reason: zen-disco-elected-as-master ([0] nodes joined)
+[2020-02-24T20:06:51,476][INFO ][o.e.g.GatewayService     ] [_client_] recovered [0] indices into cluster_state
+[2020-02-24T20:06:53,076][INFO ][o.e.h.n.Netty4HttpServerTransport] [_client_] publish_address {127.0.0.1:9200}, bound_addresses {127.0.0.1:9200}, {[::1]:9200}
+[2020-02-24T20:06:53,076][INFO ][o.e.n.Node               ] [_client_] started
+[2020-02-24T20:07:40,008][INFO ][o.e.c.m.MetaDataCreateIndexService] [_client_] [libraryserbian] creating index, cause [api], templates [], shards [1]/[0], mappings []
+[2020-02-24T20:07:40,437][INFO ][o.e.c.r.a.AllocationService] [_client_] Cluster health status changed from [YELLOW] to [GREEN] (reason: [shards started [[libraryserbian][0]] ...]).
+[2020-02-24T20:07:40,664][INFO ][o.e.c.m.MetaDataMappingService] [_client_] [libraryserbian/_FpUAaqDQQej0K49ZzvFgw] create_mapping [radovi]
+[2020-02-24T20:10:35,692][INFO ][o.e.n.Node               ] [_client_] stopping ...
+[2020-02-24T20:10:35,782][INFO ][o.e.n.Node               ] [_client_] stopped
+[2020-02-24T20:10:35,782][INFO ][o.e.n.Node               ] [_client_] closing ...
+[2020-02-24T20:10:35,797][INFO ][o.e.n.Node               ] [_client_] closed
+[2020-02-24T20:11:21,174][INFO ][o.e.n.Node               ] [_client_] initializing ...
+[2020-02-24T20:11:21,948][INFO ][o.e.e.NodeEnvironment    ] [_client_] using [1] data paths, mounts [[(C:)]], net usable_space [235.4gb], net total_space [334gb], spins? [unknown], types [NTFS]
+[2020-02-24T20:11:21,948][INFO ][o.e.e.NodeEnvironment    ] [_client_] heap size [1.9gb], compressed ordinary object pointers [true]
+[2020-02-24T20:11:21,948][INFO ][o.e.n.Node               ] [_client_] node name [_client_], node ID [MeLsjxqCRNai3CdAa9A7Zg]
+[2020-02-24T20:11:21,948][INFO ][o.e.n.Node               ] [_client_] version[5.6.16], pid[5576], build[3a740d1/2019-03-13T15:33:36.565Z], OS[Windows 10/10.0/amd64], JVM[Oracle Corporation/Java HotSpot(TM) 64-Bit Server VM/1.8.0_221/25.221-b11]
+[2020-02-24T20:11:21,948][INFO ][o.e.n.Node               ] [_client_] JVM arguments [-Xms2g, -Xmx2g, -XX:+UseConcMarkSweepGC, -XX:CMSInitiatingOccupancyFraction=75, -XX:+UseCMSInitiatingOccupancyOnly, -XX:+AlwaysPreTouch, -Xss1m, -Djava.awt.headless=true, -Dfile.encoding=UTF-8, -Djna.nosys=true, -Djdk.io.permissionsUseCanonicalPath=true, -Dio.netty.noUnsafe=true, -Dio.netty.noKeySetOptimization=true, -Dio.netty.recycler.maxCapacityPerThread=0, -Dlog4j.shutdownHookEnabled=false, -Dlog4j2.disable.jmx=true, -Dlog4j.skipJansi=true, -XX:+HeapDumpOnOutOfMemoryError, -Delasticsearch, -Des.path.home=C:\Users\Alexandar\Documents\MASTER\1_semestar\UDD\elasticsearch-5.6.16]
+[2020-02-24T20:11:26,777][INFO ][o.e.p.PluginsService     ] [_client_] loaded module [aggs-matrix-stats]
+[2020-02-24T20:11:26,794][INFO ][o.e.p.PluginsService     ] [_client_] loaded module [ingest-common]
+[2020-02-24T20:11:26,796][INFO ][o.e.p.PluginsService     ] [_client_] loaded module [lang-expression]
+[2020-02-24T20:11:26,798][INFO ][o.e.p.PluginsService     ] [_client_] loaded module [lang-groovy]
+[2020-02-24T20:11:26,799][INFO ][o.e.p.PluginsService     ] [_client_] loaded module [lang-mustache]
+[2020-02-24T20:11:26,802][INFO ][o.e.p.PluginsService     ] [_client_] loaded module [lang-painless]
+[2020-02-24T20:11:26,806][INFO ][o.e.p.PluginsService     ] [_client_] loaded module [parent-join]
+[2020-02-24T20:11:26,807][INFO ][o.e.p.PluginsService     ] [_client_] loaded module [percolator]
+[2020-02-24T20:11:26,808][INFO ][o.e.p.PluginsService     ] [_client_] loaded module [reindex]
+[2020-02-24T20:11:26,809][INFO ][o.e.p.PluginsService     ] [_client_] loaded module [transport-netty3]
+[2020-02-24T20:11:26,809][INFO ][o.e.p.PluginsService     ] [_client_] loaded module [transport-netty4]
+[2020-02-24T20:11:26,809][INFO ][o.e.p.PluginsService     ] [_client_] loaded plugin [serbian-plugin]
+[2020-02-24T20:11:30,550][INFO ][o.e.d.DiscoveryModule    ] [_client_] using discovery type [zen]
+[2020-02-24T20:11:31,581][INFO ][o.e.n.Node               ] [_client_] initialized
+[2020-02-24T20:11:31,581][INFO ][o.e.n.Node               ] [_client_] starting ...
+[2020-02-24T20:11:34,745][INFO ][o.e.t.TransportService   ] [_client_] publish_address {127.0.0.1:9300}, bound_addresses {127.0.0.1:9300}, {[::1]:9300}
+[2020-02-24T20:11:37,842][INFO ][o.e.c.s.ClusterService   ] [_client_] new_master {_client_}{MeLsjxqCRNai3CdAa9A7Zg}{NnLnE3SKRhKaJL7EbpahNw}{127.0.0.1}{127.0.0.1:9300}, reason: zen-disco-elected-as-master ([0] nodes joined)
+[2020-02-24T20:11:37,889][INFO ][o.e.g.GatewayService     ] [_client_] recovered [0] indices into cluster_state
+[2020-02-24T20:11:39,487][INFO ][o.e.h.n.Netty4HttpServerTransport] [_client_] publish_address {127.0.0.1:9200}, bound_addresses {127.0.0.1:9200}, {[::1]:9200}
+[2020-02-24T20:11:39,487][INFO ][o.e.n.Node               ] [_client_] started
+[2020-02-24T20:12:24,722][INFO ][o.e.c.m.MetaDataCreateIndexService] [_client_] [libraryserbian] creating index, cause [api], templates [], shards [1]/[0], mappings []
+[2020-02-24T20:12:25,006][INFO ][o.e.c.r.a.AllocationService] [_client_] Cluster health status changed from [YELLOW] to [GREEN] (reason: [shards started [[libraryserbian][0]] ...]).
+[2020-02-24T20:12:25,153][INFO ][o.e.c.m.MetaDataMappingService] [_client_] [libraryserbian/xwTebgp_TRqs6u3e2ZUUhg] create_mapping [radovi]
+[2020-02-24T20:21:07,317][INFO ][o.e.n.Node               ] [_client_] stopping ...
+[2020-02-24T20:21:07,363][INFO ][o.e.n.Node               ] [_client_] stopped
+[2020-02-24T20:21:07,364][INFO ][o.e.n.Node               ] [_client_] closing ...
+[2020-02-24T20:21:07,379][INFO ][o.e.n.Node               ] [_client_] closed
+[2020-02-24T20:21:24,575][INFO ][o.e.n.Node               ] [_client_] initializing ...
+[2020-02-24T20:21:25,340][INFO ][o.e.e.NodeEnvironment    ] [_client_] using [1] data paths, mounts [[(C:)]], net usable_space [235.4gb], net total_space [334gb], spins? [unknown], types [NTFS]
+[2020-02-24T20:21:25,341][INFO ][o.e.e.NodeEnvironment    ] [_client_] heap size [1.9gb], compressed ordinary object pointers [true]
+[2020-02-24T20:21:25,349][INFO ][o.e.n.Node               ] [_client_] node name [_client_], node ID [p_G-YCt2TdGvi_h0RDQL9w]
+[2020-02-24T20:21:25,350][INFO ][o.e.n.Node               ] [_client_] version[5.6.16], pid[4596], build[3a740d1/2019-03-13T15:33:36.565Z], OS[Windows 10/10.0/amd64], JVM[Oracle Corporation/Java HotSpot(TM) 64-Bit Server VM/1.8.0_221/25.221-b11]
+[2020-02-24T20:21:25,351][INFO ][o.e.n.Node               ] [_client_] JVM arguments [-Xms2g, -Xmx2g, -XX:+UseConcMarkSweepGC, -XX:CMSInitiatingOccupancyFraction=75, -XX:+UseCMSInitiatingOccupancyOnly, -XX:+AlwaysPreTouch, -Xss1m, -Djava.awt.headless=true, -Dfile.encoding=UTF-8, -Djna.nosys=true, -Djdk.io.permissionsUseCanonicalPath=true, -Dio.netty.noUnsafe=true, -Dio.netty.noKeySetOptimization=true, -Dio.netty.recycler.maxCapacityPerThread=0, -Dlog4j.shutdownHookEnabled=false, -Dlog4j2.disable.jmx=true, -Dlog4j.skipJansi=true, -XX:+HeapDumpOnOutOfMemoryError, -Delasticsearch, -Des.path.home=C:\Users\Alexandar\Documents\MASTER\1_semestar\UDD\elasticsearch-5.6.16]
+[2020-02-24T20:21:27,557][INFO ][o.e.p.PluginsService     ] [_client_] loaded module [aggs-matrix-stats]
+[2020-02-24T20:21:27,557][INFO ][o.e.p.PluginsService     ] [_client_] loaded module [ingest-common]
+[2020-02-24T20:21:27,559][INFO ][o.e.p.PluginsService     ] [_client_] loaded module [lang-expression]
+[2020-02-24T20:21:27,560][INFO ][o.e.p.PluginsService     ] [_client_] loaded module [lang-groovy]
+[2020-02-24T20:21:27,560][INFO ][o.e.p.PluginsService     ] [_client_] loaded module [lang-mustache]
+[2020-02-24T20:21:27,561][INFO ][o.e.p.PluginsService     ] [_client_] loaded module [lang-painless]
+[2020-02-24T20:21:27,563][INFO ][o.e.p.PluginsService     ] [_client_] loaded module [parent-join]
+[2020-02-24T20:21:27,563][INFO ][o.e.p.PluginsService     ] [_client_] loaded module [percolator]
+[2020-02-24T20:21:27,564][INFO ][o.e.p.PluginsService     ] [_client_] loaded module [reindex]
+[2020-02-24T20:21:27,565][INFO ][o.e.p.PluginsService     ] [_client_] loaded module [transport-netty3]
+[2020-02-24T20:21:27,566][INFO ][o.e.p.PluginsService     ] [_client_] loaded module [transport-netty4]
+[2020-02-24T20:21:27,568][INFO ][o.e.p.PluginsService     ] [_client_] loaded plugin [serbian-plugin]
+[2020-02-24T20:21:32,537][INFO ][o.e.d.DiscoveryModule    ] [_client_] using discovery type [zen]
+[2020-02-24T20:21:33,374][INFO ][o.e.n.Node               ] [_client_] initialized
+[2020-02-24T20:21:33,374][INFO ][o.e.n.Node               ] [_client_] starting ...
+[2020-02-24T20:21:36,461][INFO ][o.e.t.TransportService   ] [_client_] publish_address {127.0.0.1:9300}, bound_addresses {127.0.0.1:9300}, {[::1]:9300}
+[2020-02-24T20:21:39,555][INFO ][o.e.c.s.ClusterService   ] [_client_] new_master {_client_}{p_G-YCt2TdGvi_h0RDQL9w}{92cUAU7_Sg-VIDnGRuBFEg}{127.0.0.1}{127.0.0.1:9300}, reason: zen-disco-elected-as-master ([0] nodes joined)
+[2020-02-24T20:21:39,618][INFO ][o.e.g.GatewayService     ] [_client_] recovered [0] indices into cluster_state
+[2020-02-24T20:21:41,364][INFO ][o.e.h.n.Netty4HttpServerTransport] [_client_] publish_address {127.0.0.1:9200}, bound_addresses {127.0.0.1:9200}, {[::1]:9200}
+[2020-02-24T20:21:41,365][INFO ][o.e.n.Node               ] [_client_] started
+[2020-02-24T20:22:11,344][INFO ][o.e.c.m.MetaDataCreateIndexService] [_client_] [libraryserbian] creating index, cause [api], templates [], shards [1]/[0], mappings []
+[2020-02-24T20:22:11,705][INFO ][o.e.c.r.a.AllocationService] [_client_] Cluster health status changed from [YELLOW] to [GREEN] (reason: [shards started [[libraryserbian][0]] ...]).
+[2020-02-24T20:22:11,914][INFO ][o.e.c.m.MetaDataMappingService] [_client_] [libraryserbian/rSrwhQYMTEGeFw_EFcnasw] create_mapping [radovi]
+[2020-02-24T20:33:18,532][INFO ][o.e.n.Node               ] [_client_] stopping ...
+[2020-02-24T20:33:18,563][INFO ][o.e.n.Node               ] [_client_] stopped
+[2020-02-24T20:33:18,579][INFO ][o.e.n.Node               ] [_client_] closing ...
+[2020-02-24T20:33:18,594][INFO ][o.e.n.Node               ] [_client_] closed
+[2020-02-24T20:33:34,041][INFO ][o.e.n.Node               ] [_client_] initializing ...
+[2020-02-24T20:33:34,760][INFO ][o.e.e.NodeEnvironment    ] [_client_] using [1] data paths, mounts [[(C:)]], net usable_space [235.4gb], net total_space [334gb], spins? [unknown], types [NTFS]
+[2020-02-24T20:33:34,760][INFO ][o.e.e.NodeEnvironment    ] [_client_] heap size [1.9gb], compressed ordinary object pointers [true]
+[2020-02-24T20:33:34,775][INFO ][o.e.n.Node               ] [_client_] node name [_client_], node ID [uVDfPRLAQPqS9Wq1AHDS5A]
+[2020-02-24T20:33:34,775][INFO ][o.e.n.Node               ] [_client_] version[5.6.16], pid[8404], build[3a740d1/2019-03-13T15:33:36.565Z], OS[Windows 10/10.0/amd64], JVM[Oracle Corporation/Java HotSpot(TM) 64-Bit Server VM/1.8.0_221/25.221-b11]
+[2020-02-24T20:33:34,775][INFO ][o.e.n.Node               ] [_client_] JVM arguments [-Xms2g, -Xmx2g, -XX:+UseConcMarkSweepGC, -XX:CMSInitiatingOccupancyFraction=75, -XX:+UseCMSInitiatingOccupancyOnly, -XX:+AlwaysPreTouch, -Xss1m, -Djava.awt.headless=true, -Dfile.encoding=UTF-8, -Djna.nosys=true, -Djdk.io.permissionsUseCanonicalPath=true, -Dio.netty.noUnsafe=true, -Dio.netty.noKeySetOptimization=true, -Dio.netty.recycler.maxCapacityPerThread=0, -Dlog4j.shutdownHookEnabled=false, -Dlog4j2.disable.jmx=true, -Dlog4j.skipJansi=true, -XX:+HeapDumpOnOutOfMemoryError, -Delasticsearch, -Des.path.home=C:\Users\Alexandar\Documents\MASTER\1_semestar\UDD\elasticsearch-5.6.16]
+[2020-02-24T20:33:36,689][INFO ][o.e.p.PluginsService     ] [_client_] loaded module [aggs-matrix-stats]
+[2020-02-24T20:33:36,689][INFO ][o.e.p.PluginsService     ] [_client_] loaded module [ingest-common]
+[2020-02-24T20:33:36,689][INFO ][o.e.p.PluginsService     ] [_client_] loaded module [lang-expression]
+[2020-02-24T20:33:36,689][INFO ][o.e.p.PluginsService     ] [_client_] loaded module [lang-groovy]
+[2020-02-24T20:33:36,689][INFO ][o.e.p.PluginsService     ] [_client_] loaded module [lang-mustache]
+[2020-02-24T20:33:36,689][INFO ][o.e.p.PluginsService     ] [_client_] loaded module [lang-painless]
+[2020-02-24T20:33:36,689][INFO ][o.e.p.PluginsService     ] [_client_] loaded module [parent-join]
+[2020-02-24T20:33:36,689][INFO ][o.e.p.PluginsService     ] [_client_] loaded module [percolator]
+[2020-02-24T20:33:36,689][INFO ][o.e.p.PluginsService     ] [_client_] loaded module [reindex]
+[2020-02-24T20:33:36,689][INFO ][o.e.p.PluginsService     ] [_client_] loaded module [transport-netty3]
+[2020-02-24T20:33:36,689][INFO ][o.e.p.PluginsService     ] [_client_] loaded module [transport-netty4]
+[2020-02-24T20:33:36,689][INFO ][o.e.p.PluginsService     ] [_client_] loaded plugin [serbian-plugin]
+[2020-02-24T20:33:42,733][INFO ][o.e.d.DiscoveryModule    ] [_client_] using discovery type [zen]
+[2020-02-24T20:33:43,669][INFO ][o.e.n.Node               ] [_client_] initialized
+[2020-02-24T20:33:43,669][INFO ][o.e.n.Node               ] [_client_] starting ...
+[2020-02-24T20:33:46,744][INFO ][o.e.t.TransportService   ] [_client_] publish_address {127.0.0.1:9300}, bound_addresses {127.0.0.1:9300}, {[::1]:9300}
+[2020-02-24T20:33:49,837][INFO ][o.e.c.s.ClusterService   ] [_client_] new_master {_client_}{uVDfPRLAQPqS9Wq1AHDS5A}{6rcipLrYSU-pgMLt3E-Azw}{127.0.0.1}{127.0.0.1:9300}, reason: zen-disco-elected-as-master ([0] nodes joined)
+[2020-02-24T20:33:49,884][INFO ][o.e.g.GatewayService     ] [_client_] recovered [0] indices into cluster_state
+[2020-02-24T20:33:51,509][INFO ][o.e.h.n.Netty4HttpServerTransport] [_client_] publish_address {127.0.0.1:9200}, bound_addresses {127.0.0.1:9200}, {[::1]:9200}
+[2020-02-24T20:33:51,509][INFO ][o.e.n.Node               ] [_client_] started
+[2020-02-24T20:34:33,233][INFO ][o.e.c.m.MetaDataCreateIndexService] [_client_] [libraryserbian] creating index, cause [api], templates [], shards [1]/[0], mappings []
+[2020-02-24T20:34:33,561][INFO ][o.e.c.r.a.AllocationService] [_client_] Cluster health status changed from [YELLOW] to [GREEN] (reason: [shards started [[libraryserbian][0]] ...]).
+[2020-02-24T20:34:33,732][INFO ][o.e.c.m.MetaDataMappingService] [_client_] [libraryserbian/7bYbreDjTySqY9VizmGzrg] create_mapping [radovi]
+[2020-02-24T20:41:12,866][INFO ][o.e.n.Node               ] [_client_] stopping ...
+[2020-02-24T20:41:12,963][INFO ][o.e.n.Node               ] [_client_] stopped
+[2020-02-24T20:41:12,964][INFO ][o.e.n.Node               ] [_client_] closing ...
+[2020-02-24T20:41:12,988][INFO ][o.e.n.Node               ] [_client_] closed
+[2020-02-24T20:41:24,558][INFO ][o.e.n.Node               ] [_client_] initializing ...
+[2020-02-24T20:41:25,339][INFO ][o.e.e.NodeEnvironment    ] [_client_] using [1] data paths, mounts [[(C:)]], net usable_space [235.4gb], net total_space [334gb], spins? [unknown], types [NTFS]
+[2020-02-24T20:41:25,339][INFO ][o.e.e.NodeEnvironment    ] [_client_] heap size [1.9gb], compressed ordinary object pointers [true]
+[2020-02-24T20:41:25,354][INFO ][o.e.n.Node               ] [_client_] node name [_client_], node ID [Cq-9KPXiQMKrSsjwWWaM-w]
+[2020-02-24T20:41:25,354][INFO ][o.e.n.Node               ] [_client_] version[5.6.16], pid[2732], build[3a740d1/2019-03-13T15:33:36.565Z], OS[Windows 10/10.0/amd64], JVM[Oracle Corporation/Java HotSpot(TM) 64-Bit Server VM/1.8.0_221/25.221-b11]
+[2020-02-24T20:41:25,354][INFO ][o.e.n.Node               ] [_client_] JVM arguments [-Xms2g, -Xmx2g, -XX:+UseConcMarkSweepGC, -XX:CMSInitiatingOccupancyFraction=75, -XX:+UseCMSInitiatingOccupancyOnly, -XX:+AlwaysPreTouch, -Xss1m, -Djava.awt.headless=true, -Dfile.encoding=UTF-8, -Djna.nosys=true, -Djdk.io.permissionsUseCanonicalPath=true, -Dio.netty.noUnsafe=true, -Dio.netty.noKeySetOptimization=true, -Dio.netty.recycler.maxCapacityPerThread=0, -Dlog4j.shutdownHookEnabled=false, -Dlog4j2.disable.jmx=true, -Dlog4j.skipJansi=true, -XX:+HeapDumpOnOutOfMemoryError, -Delasticsearch, -Des.path.home=C:\Users\Alexandar\Documents\MASTER\1_semestar\UDD\elasticsearch-5.6.16]
+[2020-02-24T20:41:27,214][INFO ][o.e.p.PluginsService     ] [_client_] loaded module [aggs-matrix-stats]
+[2020-02-24T20:41:27,214][INFO ][o.e.p.PluginsService     ] [_client_] loaded module [ingest-common]
+[2020-02-24T20:41:27,229][INFO ][o.e.p.PluginsService     ] [_client_] loaded module [lang-expression]
+[2020-02-24T20:41:27,229][INFO ][o.e.p.PluginsService     ] [_client_] loaded module [lang-groovy]
+[2020-02-24T20:41:27,229][INFO ][o.e.p.PluginsService     ] [_client_] loaded module [lang-mustache]
+[2020-02-24T20:41:27,229][INFO ][o.e.p.PluginsService     ] [_client_] loaded module [lang-painless]
+[2020-02-24T20:41:27,229][INFO ][o.e.p.PluginsService     ] [_client_] loaded module [parent-join]
+[2020-02-24T20:41:27,229][INFO ][o.e.p.PluginsService     ] [_client_] loaded module [percolator]
+[2020-02-24T20:41:27,229][INFO ][o.e.p.PluginsService     ] [_client_] loaded module [reindex]
+[2020-02-24T20:41:27,229][INFO ][o.e.p.PluginsService     ] [_client_] loaded module [transport-netty3]
+[2020-02-24T20:41:27,229][INFO ][o.e.p.PluginsService     ] [_client_] loaded module [transport-netty4]
+[2020-02-24T20:41:27,245][INFO ][o.e.p.PluginsService     ] [_client_] loaded plugin [serbian-plugin]
+[2020-02-24T20:41:31,021][INFO ][o.e.d.DiscoveryModule    ] [_client_] using discovery type [zen]
+[2020-02-24T20:41:31,907][INFO ][o.e.n.Node               ] [_client_] initialized
+[2020-02-24T20:41:31,909][INFO ][o.e.n.Node               ] [_client_] starting ...
+[2020-02-24T20:41:35,053][INFO ][o.e.t.TransportService   ] [_client_] publish_address {127.0.0.1:9300}, bound_addresses {127.0.0.1:9300}, {[::1]:9300}
+[2020-02-24T20:41:38,141][INFO ][o.e.c.s.ClusterService   ] [_client_] new_master {_client_}{Cq-9KPXiQMKrSsjwWWaM-w}{r67eUNEtQYmpwhlxk9UMlg}{127.0.0.1}{127.0.0.1:9300}, reason: zen-disco-elected-as-master ([0] nodes joined)
+[2020-02-24T20:41:38,206][INFO ][o.e.g.GatewayService     ] [_client_] recovered [0] indices into cluster_state
+[2020-02-24T20:41:39,806][INFO ][o.e.h.n.Netty4HttpServerTransport] [_client_] publish_address {127.0.0.1:9200}, bound_addresses {127.0.0.1:9200}, {[::1]:9200}
+[2020-02-24T20:41:39,807][INFO ][o.e.n.Node               ] [_client_] started
+[2020-02-24T20:43:19,361][INFO ][o.e.c.m.MetaDataCreateIndexService] [_client_] [libraryserbian] creating index, cause [api], templates [], shards [1]/[0], mappings []
+[2020-02-24T20:43:19,719][INFO ][o.e.c.r.a.AllocationService] [_client_] Cluster health status changed from [YELLOW] to [GREEN] (reason: [shards started [[libraryserbian][0]] ...]).
+[2020-02-24T20:43:20,063][INFO ][o.e.c.m.MetaDataMappingService] [_client_] [libraryserbian/y_aqlXEUTfCaNcgqaxSTVA] create_mapping [radovi]
+[2020-02-24T20:51:00,695][INFO ][o.e.n.Node               ] [_client_] stopping ...
+[2020-02-24T20:51:00,844][INFO ][o.e.n.Node               ] [_client_] stopped
+[2020-02-24T20:51:00,845][INFO ][o.e.n.Node               ] [_client_] closing ...
+[2020-02-24T20:51:00,869][INFO ][o.e.n.Node               ] [_client_] closed
+[2020-02-24T20:51:21,026][INFO ][o.e.n.Node               ] [_client_] initializing ...
+[2020-02-24T20:51:21,832][INFO ][o.e.e.NodeEnvironment    ] [_client_] using [1] data paths, mounts [[(C:)]], net usable_space [235.3gb], net total_space [334gb], spins? [unknown], types [NTFS]
+[2020-02-24T20:51:21,834][INFO ][o.e.e.NodeEnvironment    ] [_client_] heap size [1.9gb], compressed ordinary object pointers [true]
+[2020-02-24T20:51:21,846][INFO ][o.e.n.Node               ] [_client_] node name [_client_], node ID [xlHP1OlmTQKhKsVzBd867w]
+[2020-02-24T20:51:21,847][INFO ][o.e.n.Node               ] [_client_] version[5.6.16], pid[7164], build[3a740d1/2019-03-13T15:33:36.565Z], OS[Windows 10/10.0/amd64], JVM[Oracle Corporation/Java HotSpot(TM) 64-Bit Server VM/1.8.0_221/25.221-b11]
+[2020-02-24T20:51:21,848][INFO ][o.e.n.Node               ] [_client_] JVM arguments [-Xms2g, -Xmx2g, -XX:+UseConcMarkSweepGC, -XX:CMSInitiatingOccupancyFraction=75, -XX:+UseCMSInitiatingOccupancyOnly, -XX:+AlwaysPreTouch, -Xss1m, -Djava.awt.headless=true, -Dfile.encoding=UTF-8, -Djna.nosys=true, -Djdk.io.permissionsUseCanonicalPath=true, -Dio.netty.noUnsafe=true, -Dio.netty.noKeySetOptimization=true, -Dio.netty.recycler.maxCapacityPerThread=0, -Dlog4j.shutdownHookEnabled=false, -Dlog4j2.disable.jmx=true, -Dlog4j.skipJansi=true, -XX:+HeapDumpOnOutOfMemoryError, -Delasticsearch, -Des.path.home=C:\Users\Alexandar\Documents\MASTER\1_semestar\UDD\elasticsearch-5.6.16]
+[2020-02-24T20:51:23,862][INFO ][o.e.p.PluginsService     ] [_client_] loaded module [aggs-matrix-stats]
+[2020-02-24T20:51:23,862][INFO ][o.e.p.PluginsService     ] [_client_] loaded module [ingest-common]
+[2020-02-24T20:51:23,866][INFO ][o.e.p.PluginsService     ] [_client_] loaded module [lang-expression]
+[2020-02-24T20:51:23,868][INFO ][o.e.p.PluginsService     ] [_client_] loaded module [lang-groovy]
+[2020-02-24T20:51:23,869][INFO ][o.e.p.PluginsService     ] [_client_] loaded module [lang-mustache]
+[2020-02-24T20:51:23,870][INFO ][o.e.p.PluginsService     ] [_client_] loaded module [lang-painless]
+[2020-02-24T20:51:23,873][INFO ][o.e.p.PluginsService     ] [_client_] loaded module [parent-join]
+[2020-02-24T20:51:23,875][INFO ][o.e.p.PluginsService     ] [_client_] loaded module [percolator]
+[2020-02-24T20:51:23,876][INFO ][o.e.p.PluginsService     ] [_client_] loaded module [reindex]
+[2020-02-24T20:51:23,878][INFO ][o.e.p.PluginsService     ] [_client_] loaded module [transport-netty3]
+[2020-02-24T20:51:23,879][INFO ][o.e.p.PluginsService     ] [_client_] loaded module [transport-netty4]
+[2020-02-24T20:51:23,883][INFO ][o.e.p.PluginsService     ] [_client_] loaded plugin [serbian-plugin]
+[2020-02-24T20:51:28,018][INFO ][o.e.d.DiscoveryModule    ] [_client_] using discovery type [zen]
+[2020-02-24T20:51:29,039][INFO ][o.e.n.Node               ] [_client_] initialized
+[2020-02-24T20:51:29,040][INFO ][o.e.n.Node               ] [_client_] starting ...
+[2020-02-24T20:51:32,397][INFO ][o.e.t.TransportService   ] [_client_] publish_address {127.0.0.1:9300}, bound_addresses {127.0.0.1:9300}, {[::1]:9300}
+[2020-02-24T20:51:35,485][INFO ][o.e.c.s.ClusterService   ] [_client_] new_master {_client_}{xlHP1OlmTQKhKsVzBd867w}{rRQeuIjpSZ6HPlJ1FZ_bVw}{127.0.0.1}{127.0.0.1:9300}, reason: zen-disco-elected-as-master ([0] nodes joined)
+[2020-02-24T20:51:35,552][INFO ][o.e.g.GatewayService     ] [_client_] recovered [0] indices into cluster_state
+[2020-02-24T20:51:37,167][INFO ][o.e.h.n.Netty4HttpServerTransport] [_client_] publish_address {127.0.0.1:9200}, bound_addresses {127.0.0.1:9200}, {[::1]:9200}
+[2020-02-24T20:51:37,167][INFO ][o.e.n.Node               ] [_client_] started
+[2020-02-24T20:53:48,194][INFO ][o.e.c.m.MetaDataCreateIndexService] [_client_] [libraryserbian] creating index, cause [api], templates [], shards [1]/[0], mappings []
+[2020-02-24T20:53:48,591][INFO ][o.e.c.r.a.AllocationService] [_client_] Cluster health status changed from [YELLOW] to [GREEN] (reason: [shards started [[libraryserbian][0]] ...]).
+[2020-02-24T20:53:48,801][INFO ][o.e.c.m.MetaDataMappingService] [_client_] [libraryserbian/S6RzM1eSRJyWduuAgW2Ubw] create_mapping [radovi]
+[2020-02-24T20:58:09,615][INFO ][o.e.n.Node               ] [_client_] stopping ...
+[2020-02-24T20:58:09,733][INFO ][o.e.n.Node               ] [_client_] stopped
+[2020-02-24T20:58:09,734][INFO ][o.e.n.Node               ] [_client_] closing ...
+[2020-02-24T20:58:09,770][INFO ][o.e.n.Node               ] [_client_] closed
+[2020-02-24T20:58:26,829][INFO ][o.e.n.Node               ] [_client_] initializing ...
+[2020-02-24T20:58:27,735][INFO ][o.e.e.NodeEnvironment    ] [_client_] using [1] data paths, mounts [[(C:)]], net usable_space [235.3gb], net total_space [334gb], spins? [unknown], types [NTFS]
+[2020-02-24T20:58:27,736][INFO ][o.e.e.NodeEnvironment    ] [_client_] heap size [1.9gb], compressed ordinary object pointers [true]
+[2020-02-24T20:58:27,744][INFO ][o.e.n.Node               ] [_client_] node name [_client_], node ID [zJuAUiQMTAKfjwgAGgxybw]
+[2020-02-24T20:58:27,746][INFO ][o.e.n.Node               ] [_client_] version[5.6.16], pid[9008], build[3a740d1/2019-03-13T15:33:36.565Z], OS[Windows 10/10.0/amd64], JVM[Oracle Corporation/Java HotSpot(TM) 64-Bit Server VM/1.8.0_221/25.221-b11]
+[2020-02-24T20:58:27,747][INFO ][o.e.n.Node               ] [_client_] JVM arguments [-Xms2g, -Xmx2g, -XX:+UseConcMarkSweepGC, -XX:CMSInitiatingOccupancyFraction=75, -XX:+UseCMSInitiatingOccupancyOnly, -XX:+AlwaysPreTouch, -Xss1m, -Djava.awt.headless=true, -Dfile.encoding=UTF-8, -Djna.nosys=true, -Djdk.io.permissionsUseCanonicalPath=true, -Dio.netty.noUnsafe=true, -Dio.netty.noKeySetOptimization=true, -Dio.netty.recycler.maxCapacityPerThread=0, -Dlog4j.shutdownHookEnabled=false, -Dlog4j2.disable.jmx=true, -Dlog4j.skipJansi=true, -XX:+HeapDumpOnOutOfMemoryError, -Delasticsearch, -Des.path.home=C:\Users\Alexandar\Documents\MASTER\1_semestar\UDD\elasticsearch-5.6.16]
+[2020-02-24T20:58:32,077][INFO ][o.e.p.PluginsService     ] [_client_] loaded module [aggs-matrix-stats]
+[2020-02-24T20:58:32,080][INFO ][o.e.p.PluginsService     ] [_client_] loaded module [ingest-common]
+[2020-02-24T20:58:32,083][INFO ][o.e.p.PluginsService     ] [_client_] loaded module [lang-expression]
+[2020-02-24T20:58:32,085][INFO ][o.e.p.PluginsService     ] [_client_] loaded module [lang-groovy]
+[2020-02-24T20:58:32,102][INFO ][o.e.p.PluginsService     ] [_client_] loaded module [lang-mustache]
+[2020-02-24T20:58:32,108][INFO ][o.e.p.PluginsService     ] [_client_] loaded module [lang-painless]
+[2020-02-24T20:58:32,119][INFO ][o.e.p.PluginsService     ] [_client_] loaded module [parent-join]
+[2020-02-24T20:58:32,124][INFO ][o.e.p.PluginsService     ] [_client_] loaded module [percolator]
+[2020-02-24T20:58:32,125][INFO ][o.e.p.PluginsService     ] [_client_] loaded module [reindex]
+[2020-02-24T20:58:32,134][INFO ][o.e.p.PluginsService     ] [_client_] loaded module [transport-netty3]
+[2020-02-24T20:58:32,135][INFO ][o.e.p.PluginsService     ] [_client_] loaded module [transport-netty4]
+[2020-02-24T20:58:32,141][INFO ][o.e.p.PluginsService     ] [_client_] loaded plugin [serbian-plugin]
+[2020-02-24T20:58:40,816][INFO ][o.e.d.DiscoveryModule    ] [_client_] using discovery type [zen]
+[2020-02-24T20:58:42,355][INFO ][o.e.n.Node               ] [_client_] initialized
+[2020-02-24T20:58:42,356][INFO ][o.e.n.Node               ] [_client_] starting ...
+[2020-02-24T20:58:47,467][INFO ][o.e.t.TransportService   ] [_client_] publish_address {127.0.0.1:9300}, bound_addresses {127.0.0.1:9300}, {[::1]:9300}
+[2020-02-24T20:58:50,614][INFO ][o.e.c.s.ClusterService   ] [_client_] new_master {_client_}{zJuAUiQMTAKfjwgAGgxybw}{Le8qx69sQyGVz-N-zrbEBQ}{127.0.0.1}{127.0.0.1:9300}, reason: zen-disco-elected-as-master ([0] nodes joined)
+[2020-02-24T20:58:50,686][INFO ][o.e.g.GatewayService     ] [_client_] recovered [0] indices into cluster_state
+[2020-02-24T20:58:53,527][INFO ][o.e.h.n.Netty4HttpServerTransport] [_client_] publish_address {127.0.0.1:9200}, bound_addresses {127.0.0.1:9200}, {[::1]:9200}
+[2020-02-24T20:58:53,529][INFO ][o.e.n.Node               ] [_client_] started
+[2020-02-24T20:59:56,408][INFO ][o.e.c.m.MetaDataCreateIndexService] [_client_] [libraryserbian] creating index, cause [api], templates [], shards [1]/[0], mappings []
+[2020-02-24T20:59:57,215][INFO ][o.e.c.r.a.AllocationService] [_client_] Cluster health status changed from [YELLOW] to [GREEN] (reason: [shards started [[libraryserbian][0]] ...]).
+[2020-02-24T20:59:57,655][INFO ][o.e.c.m.MetaDataMappingService] [_client_] [libraryserbian/EJFlUwDSQNe0pyZLvMkgCA] create_mapping [radovi]
+[2020-02-24T21:09:19,591][INFO ][o.e.n.Node               ] [_client_] stopping ...
+[2020-02-24T21:09:19,645][INFO ][o.e.n.Node               ] [_client_] stopped
+[2020-02-24T21:09:19,648][INFO ][o.e.n.Node               ] [_client_] closing ...
+[2020-02-24T21:09:19,682][INFO ][o.e.n.Node               ] [_client_] closed
+[2020-02-24T21:09:48,470][INFO ][o.e.n.Node               ] [_client_] initializing ...
+[2020-02-24T21:09:49,409][INFO ][o.e.e.NodeEnvironment    ] [_client_] using [1] data paths, mounts [[(C:)]], net usable_space [235.2gb], net total_space [334gb], spins? [unknown], types [NTFS]
+[2020-02-24T21:09:49,410][INFO ][o.e.e.NodeEnvironment    ] [_client_] heap size [1.9gb], compressed ordinary object pointers [true]
+[2020-02-24T21:09:49,422][INFO ][o.e.n.Node               ] [_client_] node name [_client_], node ID [yagpePhmQGKZc8w7ZSO6pg]
+[2020-02-24T21:09:49,423][INFO ][o.e.n.Node               ] [_client_] version[5.6.16], pid[11304], build[3a740d1/2019-03-13T15:33:36.565Z], OS[Windows 10/10.0/amd64], JVM[Oracle Corporation/Java HotSpot(TM) 64-Bit Server VM/1.8.0_221/25.221-b11]
+[2020-02-24T21:09:49,424][INFO ][o.e.n.Node               ] [_client_] JVM arguments [-Xms2g, -Xmx2g, -XX:+UseConcMarkSweepGC, -XX:CMSInitiatingOccupancyFraction=75, -XX:+UseCMSInitiatingOccupancyOnly, -XX:+AlwaysPreTouch, -Xss1m, -Djava.awt.headless=true, -Dfile.encoding=UTF-8, -Djna.nosys=true, -Djdk.io.permissionsUseCanonicalPath=true, -Dio.netty.noUnsafe=true, -Dio.netty.noKeySetOptimization=true, -Dio.netty.recycler.maxCapacityPerThread=0, -Dlog4j.shutdownHookEnabled=false, -Dlog4j2.disable.jmx=true, -Dlog4j.skipJansi=true, -XX:+HeapDumpOnOutOfMemoryError, -Delasticsearch, -Des.path.home=C:\Users\Alexandar\Documents\MASTER\1_semestar\UDD\elasticsearch-5.6.16]
+[2020-02-24T21:09:51,527][INFO ][o.e.p.PluginsService     ] [_client_] loaded module [aggs-matrix-stats]
+[2020-02-24T21:09:51,528][INFO ][o.e.p.PluginsService     ] [_client_] loaded module [ingest-common]
+[2020-02-24T21:09:51,530][INFO ][o.e.p.PluginsService     ] [_client_] loaded module [lang-expression]
+[2020-02-24T21:09:51,532][INFO ][o.e.p.PluginsService     ] [_client_] loaded module [lang-groovy]
+[2020-02-24T21:09:51,533][INFO ][o.e.p.PluginsService     ] [_client_] loaded module [lang-mustache]
+[2020-02-24T21:09:51,533][INFO ][o.e.p.PluginsService     ] [_client_] loaded module [lang-painless]
+[2020-02-24T21:09:51,535][INFO ][o.e.p.PluginsService     ] [_client_] loaded module [parent-join]
+[2020-02-24T21:09:51,536][INFO ][o.e.p.PluginsService     ] [_client_] loaded module [percolator]
+[2020-02-24T21:09:51,537][INFO ][o.e.p.PluginsService     ] [_client_] loaded module [reindex]
+[2020-02-24T21:09:51,538][INFO ][o.e.p.PluginsService     ] [_client_] loaded module [transport-netty3]
+[2020-02-24T21:09:51,540][INFO ][o.e.p.PluginsService     ] [_client_] loaded module [transport-netty4]
+[2020-02-24T21:09:51,542][INFO ][o.e.p.PluginsService     ] [_client_] loaded plugin [serbian-plugin]
+[2020-02-24T21:09:56,201][INFO ][o.e.d.DiscoveryModule    ] [_client_] using discovery type [zen]
+[2020-02-24T21:09:57,857][INFO ][o.e.n.Node               ] [_client_] initialized
+[2020-02-24T21:09:57,859][INFO ][o.e.n.Node               ] [_client_] starting ...
+[2020-02-24T21:10:04,234][INFO ][o.e.t.TransportService   ] [_client_] publish_address {127.0.0.1:9300}, bound_addresses {127.0.0.1:9300}, {[::1]:9300}
+[2020-02-24T21:10:07,401][INFO ][o.e.c.s.ClusterService   ] [_client_] new_master {_client_}{yagpePhmQGKZc8w7ZSO6pg}{jZcRQDl1RXu3FQtkH7aE9A}{127.0.0.1}{127.0.0.1:9300}, reason: zen-disco-elected-as-master ([0] nodes joined)
+[2020-02-24T21:10:07,476][INFO ][o.e.g.GatewayService     ] [_client_] recovered [0] indices into cluster_state
+[2020-02-24T21:10:09,866][INFO ][o.e.h.n.Netty4HttpServerTransport] [_client_] publish_address {127.0.0.1:9200}, bound_addresses {127.0.0.1:9200}, {[::1]:9200}
+[2020-02-24T21:10:09,866][INFO ][o.e.n.Node               ] [_client_] started
+[2020-02-24T21:10:51,001][INFO ][o.e.c.m.MetaDataCreateIndexService] [_client_] [libraryserbian] creating index, cause [api], templates [], shards [1]/[0], mappings []
+[2020-02-24T21:10:51,304][INFO ][o.e.c.r.a.AllocationService] [_client_] Cluster health status changed from [YELLOW] to [GREEN] (reason: [shards started [[libraryserbian][0]] ...]).
+[2020-02-24T21:10:51,474][INFO ][o.e.c.m.MetaDataMappingService] [_client_] [libraryserbian/RUFC0ohJRneDNS3YsCKJNw] create_mapping [radovi]
+[2020-02-24T21:18:33,001][INFO ][o.e.n.Node               ] [_client_] stopping ...
+[2020-02-24T21:18:33,040][INFO ][o.e.n.Node               ] [_client_] stopped
+[2020-02-24T21:18:33,042][INFO ][o.e.n.Node               ] [_client_] closing ...
+[2020-02-24T21:18:33,062][INFO ][o.e.n.Node               ] [_client_] closed
+[2020-02-24T21:18:49,592][INFO ][o.e.n.Node               ] [_client_] initializing ...
+[2020-02-24T21:18:50,518][INFO ][o.e.e.NodeEnvironment    ] [_client_] using [1] data paths, mounts [[(C:)]], net usable_space [235.2gb], net total_space [334gb], spins? [unknown], types [NTFS]
+[2020-02-24T21:18:50,519][INFO ][o.e.e.NodeEnvironment    ] [_client_] heap size [1.9gb], compressed ordinary object pointers [true]
+[2020-02-24T21:18:50,532][INFO ][o.e.n.Node               ] [_client_] node name [_client_], node ID [djbWhTwSRjOd1rGKIoKU9A]
+[2020-02-24T21:18:50,532][INFO ][o.e.n.Node               ] [_client_] version[5.6.16], pid[4544], build[3a740d1/2019-03-13T15:33:36.565Z], OS[Windows 10/10.0/amd64], JVM[Oracle Corporation/Java HotSpot(TM) 64-Bit Server VM/1.8.0_221/25.221-b11]
+[2020-02-24T21:18:50,534][INFO ][o.e.n.Node               ] [_client_] JVM arguments [-Xms2g, -Xmx2g, -XX:+UseConcMarkSweepGC, -XX:CMSInitiatingOccupancyFraction=75, -XX:+UseCMSInitiatingOccupancyOnly, -XX:+AlwaysPreTouch, -Xss1m, -Djava.awt.headless=true, -Dfile.encoding=UTF-8, -Djna.nosys=true, -Djdk.io.permissionsUseCanonicalPath=true, -Dio.netty.noUnsafe=true, -Dio.netty.noKeySetOptimization=true, -Dio.netty.recycler.maxCapacityPerThread=0, -Dlog4j.shutdownHookEnabled=false, -Dlog4j2.disable.jmx=true, -Dlog4j.skipJansi=true, -XX:+HeapDumpOnOutOfMemoryError, -Delasticsearch, -Des.path.home=C:\Users\Alexandar\Documents\MASTER\1_semestar\UDD\elasticsearch-5.6.16]
+[2020-02-24T21:18:52,640][INFO ][o.e.p.PluginsService     ] [_client_] loaded module [aggs-matrix-stats]
+[2020-02-24T21:18:52,641][INFO ][o.e.p.PluginsService     ] [_client_] loaded module [ingest-common]
+[2020-02-24T21:18:52,646][INFO ][o.e.p.PluginsService     ] [_client_] loaded module [lang-expression]
+[2020-02-24T21:18:52,646][INFO ][o.e.p.PluginsService     ] [_client_] loaded module [lang-groovy]
+[2020-02-24T21:18:52,648][INFO ][o.e.p.PluginsService     ] [_client_] loaded module [lang-mustache]
+[2020-02-24T21:18:52,648][INFO ][o.e.p.PluginsService     ] [_client_] loaded module [lang-painless]
+[2020-02-24T21:18:52,650][INFO ][o.e.p.PluginsService     ] [_client_] loaded module [parent-join]
+[2020-02-24T21:18:52,650][INFO ][o.e.p.PluginsService     ] [_client_] loaded module [percolator]
+[2020-02-24T21:18:52,651][INFO ][o.e.p.PluginsService     ] [_client_] loaded module [reindex]
+[2020-02-24T21:18:52,653][INFO ][o.e.p.PluginsService     ] [_client_] loaded module [transport-netty3]
+[2020-02-24T21:18:52,657][INFO ][o.e.p.PluginsService     ] [_client_] loaded module [transport-netty4]
+[2020-02-24T21:18:52,659][INFO ][o.e.p.PluginsService     ] [_client_] loaded plugin [serbian-plugin]
+[2020-02-24T21:18:57,075][INFO ][o.e.d.DiscoveryModule    ] [_client_] using discovery type [zen]
+[2020-02-24T21:18:58,297][INFO ][o.e.n.Node               ] [_client_] initialized
+[2020-02-24T21:18:58,303][INFO ][o.e.n.Node               ] [_client_] starting ...
+[2020-02-24T21:19:01,688][INFO ][o.e.t.TransportService   ] [_client_] publish_address {127.0.0.1:9300}, bound_addresses {127.0.0.1:9300}, {[::1]:9300}
+[2020-02-24T21:19:04,771][INFO ][o.e.c.s.ClusterService   ] [_client_] new_master {_client_}{djbWhTwSRjOd1rGKIoKU9A}{Vg_5uQWoS66BHjFKCBvAqQ}{127.0.0.1}{127.0.0.1:9300}, reason: zen-disco-elected-as-master ([0] nodes joined)
+[2020-02-24T21:19:04,822][INFO ][o.e.g.GatewayService     ] [_client_] recovered [0] indices into cluster_state
+[2020-02-24T21:19:06,522][INFO ][o.e.h.n.Netty4HttpServerTransport] [_client_] publish_address {127.0.0.1:9200}, bound_addresses {127.0.0.1:9200}, {[::1]:9200}
+[2020-02-24T21:19:06,522][INFO ][o.e.n.Node               ] [_client_] started
+[2020-02-24T21:19:47,654][INFO ][o.e.c.m.MetaDataCreateIndexService] [_client_] [libraryserbian] creating index, cause [api], templates [], shards [1]/[0], mappings []
+[2020-02-24T21:19:47,984][INFO ][o.e.c.r.a.AllocationService] [_client_] Cluster health status changed from [YELLOW] to [GREEN] (reason: [shards started [[libraryserbian][0]] ...]).
+[2020-02-24T21:19:48,167][INFO ][o.e.c.m.MetaDataMappingService] [_client_] [libraryserbian/6DLHI3B-TTup_cSTdmTpSg] create_mapping [radovi]
+[2020-02-24T21:25:32,729][INFO ][o.e.n.Node               ] [_client_] stopping ...
+[2020-02-24T21:25:32,861][INFO ][o.e.n.Node               ] [_client_] stopped
+[2020-02-24T21:25:32,862][INFO ][o.e.n.Node               ] [_client_] closing ...
+[2020-02-24T21:25:32,899][INFO ][o.e.n.Node               ] [_client_] closed
+[2020-02-24T21:25:51,526][INFO ][o.e.n.Node               ] [_client_] initializing ...
+[2020-02-24T21:25:52,334][INFO ][o.e.e.NodeEnvironment    ] [_client_] using [1] data paths, mounts [[(C:)]], net usable_space [235.2gb], net total_space [334gb], spins? [unknown], types [NTFS]
+[2020-02-24T21:25:52,335][INFO ][o.e.e.NodeEnvironment    ] [_client_] heap size [1.9gb], compressed ordinary object pointers [true]
+[2020-02-24T21:25:52,347][INFO ][o.e.n.Node               ] [_client_] node name [_client_], node ID [r9MUesPpR1eKBaeGT2YkWQ]
+[2020-02-24T21:25:52,348][INFO ][o.e.n.Node               ] [_client_] version[5.6.16], pid[12552], build[3a740d1/2019-03-13T15:33:36.565Z], OS[Windows 10/10.0/amd64], JVM[Oracle Corporation/Java HotSpot(TM) 64-Bit Server VM/1.8.0_221/25.221-b11]
+[2020-02-24T21:25:52,350][INFO ][o.e.n.Node               ] [_client_] JVM arguments [-Xms2g, -Xmx2g, -XX:+UseConcMarkSweepGC, -XX:CMSInitiatingOccupancyFraction=75, -XX:+UseCMSInitiatingOccupancyOnly, -XX:+AlwaysPreTouch, -Xss1m, -Djava.awt.headless=true, -Dfile.encoding=UTF-8, -Djna.nosys=true, -Djdk.io.permissionsUseCanonicalPath=true, -Dio.netty.noUnsafe=true, -Dio.netty.noKeySetOptimization=true, -Dio.netty.recycler.maxCapacityPerThread=0, -Dlog4j.shutdownHookEnabled=false, -Dlog4j2.disable.jmx=true, -Dlog4j.skipJansi=true, -XX:+HeapDumpOnOutOfMemoryError, -Delasticsearch, -Des.path.home=C:\Users\Alexandar\Documents\MASTER\1_semestar\UDD\elasticsearch-5.6.16]
+[2020-02-24T21:25:54,434][INFO ][o.e.p.PluginsService     ] [_client_] loaded module [aggs-matrix-stats]
+[2020-02-24T21:25:54,435][INFO ][o.e.p.PluginsService     ] [_client_] loaded module [ingest-common]
+[2020-02-24T21:25:54,439][INFO ][o.e.p.PluginsService     ] [_client_] loaded module [lang-expression]
+[2020-02-24T21:25:54,440][INFO ][o.e.p.PluginsService     ] [_client_] loaded module [lang-groovy]
+[2020-02-24T21:25:54,441][INFO ][o.e.p.PluginsService     ] [_client_] loaded module [lang-mustache]
+[2020-02-24T21:25:54,443][INFO ][o.e.p.PluginsService     ] [_client_] loaded module [lang-painless]
+[2020-02-24T21:25:54,448][INFO ][o.e.p.PluginsService     ] [_client_] loaded module [parent-join]
+[2020-02-24T21:25:54,448][INFO ][o.e.p.PluginsService     ] [_client_] loaded module [percolator]
+[2020-02-24T21:25:54,450][INFO ][o.e.p.PluginsService     ] [_client_] loaded module [reindex]
+[2020-02-24T21:25:54,452][INFO ][o.e.p.PluginsService     ] [_client_] loaded module [transport-netty3]
+[2020-02-24T21:25:54,454][INFO ][o.e.p.PluginsService     ] [_client_] loaded module [transport-netty4]
+[2020-02-24T21:25:54,458][INFO ][o.e.p.PluginsService     ] [_client_] loaded plugin [serbian-plugin]
+[2020-02-24T21:25:59,620][INFO ][o.e.d.DiscoveryModule    ] [_client_] using discovery type [zen]
+[2020-02-24T21:26:00,660][INFO ][o.e.n.Node               ] [_client_] initialized
+[2020-02-24T21:26:00,660][INFO ][o.e.n.Node               ] [_client_] starting ...
+[2020-02-24T21:26:03,833][INFO ][o.e.t.TransportService   ] [_client_] publish_address {127.0.0.1:9300}, bound_addresses {127.0.0.1:9300}, {[::1]:9300}
+[2020-02-24T21:26:06,924][INFO ][o.e.c.s.ClusterService   ] [_client_] new_master {_client_}{r9MUesPpR1eKBaeGT2YkWQ}{DK-7cfanSyyUyWKiBC6Rsw}{127.0.0.1}{127.0.0.1:9300}, reason: zen-disco-elected-as-master ([0] nodes joined)
+[2020-02-24T21:26:06,985][INFO ][o.e.g.GatewayService     ] [_client_] recovered [0] indices into cluster_state
+[2020-02-24T21:26:08,605][INFO ][o.e.h.n.Netty4HttpServerTransport] [_client_] publish_address {127.0.0.1:9200}, bound_addresses {127.0.0.1:9200}, {[::1]:9200}
+[2020-02-24T21:26:08,606][INFO ][o.e.n.Node               ] [_client_] started
+[2020-02-24T21:26:34,777][INFO ][o.e.c.m.MetaDataCreateIndexService] [_client_] [libraryserbian] creating index, cause [api], templates [], shards [1]/[0], mappings []
+[2020-02-24T21:26:35,074][INFO ][o.e.c.r.a.AllocationService] [_client_] Cluster health status changed from [YELLOW] to [GREEN] (reason: [shards started [[libraryserbian][0]] ...]).
+[2020-02-24T21:26:35,247][INFO ][o.e.c.m.MetaDataMappingService] [_client_] [libraryserbian/jiBPS8fxTD2SRWHn5emA-A] create_mapping [radovi]
+[2020-02-24T21:31:24,005][INFO ][o.e.n.Node               ] [_client_] stopping ...
+[2020-02-24T21:31:24,107][INFO ][o.e.n.Node               ] [_client_] stopped
+[2020-02-24T21:31:24,108][INFO ][o.e.n.Node               ] [_client_] closing ...
+[2020-02-24T21:31:24,122][INFO ][o.e.n.Node               ] [_client_] closed
+[2020-02-24T21:31:44,803][INFO ][o.e.n.Node               ] [_client_] initializing ...
+[2020-02-24T21:31:45,617][INFO ][o.e.e.NodeEnvironment    ] [_client_] using [1] data paths, mounts [[(C:)]], net usable_space [235.2gb], net total_space [334gb], spins? [unknown], types [NTFS]
+[2020-02-24T21:31:45,618][INFO ][o.e.e.NodeEnvironment    ] [_client_] heap size [1.9gb], compressed ordinary object pointers [true]
+[2020-02-24T21:31:45,632][INFO ][o.e.n.Node               ] [_client_] node name [_client_], node ID [HiMYFzreRsyV9W9d7hvOxw]
+[2020-02-24T21:31:45,633][INFO ][o.e.n.Node               ] [_client_] version[5.6.16], pid[8436], build[3a740d1/2019-03-13T15:33:36.565Z], OS[Windows 10/10.0/amd64], JVM[Oracle Corporation/Java HotSpot(TM) 64-Bit Server VM/1.8.0_221/25.221-b11]
+[2020-02-24T21:31:45,634][INFO ][o.e.n.Node               ] [_client_] JVM arguments [-Xms2g, -Xmx2g, -XX:+UseConcMarkSweepGC, -XX:CMSInitiatingOccupancyFraction=75, -XX:+UseCMSInitiatingOccupancyOnly, -XX:+AlwaysPreTouch, -Xss1m, -Djava.awt.headless=true, -Dfile.encoding=UTF-8, -Djna.nosys=true, -Djdk.io.permissionsUseCanonicalPath=true, -Dio.netty.noUnsafe=true, -Dio.netty.noKeySetOptimization=true, -Dio.netty.recycler.maxCapacityPerThread=0, -Dlog4j.shutdownHookEnabled=false, -Dlog4j2.disable.jmx=true, -Dlog4j.skipJansi=true, -XX:+HeapDumpOnOutOfMemoryError, -Delasticsearch, -Des.path.home=C:\Users\Alexandar\Documents\MASTER\1_semestar\UDD\elasticsearch-5.6.16]
+[2020-02-24T21:31:48,547][INFO ][o.e.p.PluginsService     ] [_client_] loaded module [aggs-matrix-stats]
+[2020-02-24T21:31:48,548][INFO ][o.e.p.PluginsService     ] [_client_] loaded module [ingest-common]
+[2020-02-24T21:31:48,551][INFO ][o.e.p.PluginsService     ] [_client_] loaded module [lang-expression]
+[2020-02-24T21:31:48,553][INFO ][o.e.p.PluginsService     ] [_client_] loaded module [lang-groovy]
+[2020-02-24T21:31:48,554][INFO ][o.e.p.PluginsService     ] [_client_] loaded module [lang-mustache]
+[2020-02-24T21:31:48,556][INFO ][o.e.p.PluginsService     ] [_client_] loaded module [lang-painless]
+[2020-02-24T21:31:48,557][INFO ][o.e.p.PluginsService     ] [_client_] loaded module [parent-join]
+[2020-02-24T21:31:48,560][INFO ][o.e.p.PluginsService     ] [_client_] loaded module [percolator]
+[2020-02-24T21:31:48,561][INFO ][o.e.p.PluginsService     ] [_client_] loaded module [reindex]
+[2020-02-24T21:31:48,564][INFO ][o.e.p.PluginsService     ] [_client_] loaded module [transport-netty3]
+[2020-02-24T21:31:48,566][INFO ][o.e.p.PluginsService     ] [_client_] loaded module [transport-netty4]
+[2020-02-24T21:31:48,569][INFO ][o.e.p.PluginsService     ] [_client_] loaded plugin [serbian-plugin]
+[2020-02-24T21:31:52,835][INFO ][o.e.d.DiscoveryModule    ] [_client_] using discovery type [zen]
+[2020-02-24T21:31:53,757][INFO ][o.e.n.Node               ] [_client_] initialized
+[2020-02-24T21:31:53,758][INFO ][o.e.n.Node               ] [_client_] starting ...
+[2020-02-24T21:31:57,028][INFO ][o.e.t.TransportService   ] [_client_] publish_address {127.0.0.1:9300}, bound_addresses {127.0.0.1:9300}, {[::1]:9300}
+[2020-02-24T21:32:00,116][INFO ][o.e.c.s.ClusterService   ] [_client_] new_master {_client_}{HiMYFzreRsyV9W9d7hvOxw}{dg6_WNA3S4yQut9iDxXnlg}{127.0.0.1}{127.0.0.1:9300}, reason: zen-disco-elected-as-master ([0] nodes joined)
+[2020-02-24T21:32:00,188][INFO ][o.e.g.GatewayService     ] [_client_] recovered [0] indices into cluster_state
+[2020-02-24T21:32:01,807][INFO ][o.e.h.n.Netty4HttpServerTransport] [_client_] publish_address {127.0.0.1:9200}, bound_addresses {127.0.0.1:9200}, {[::1]:9200}
+[2020-02-24T21:32:01,808][INFO ][o.e.n.Node               ] [_client_] started
+[2020-02-24T23:02:19,762][INFO ][o.e.c.m.MetaDataCreateIndexService] [_client_] [libraryserbian] creating index, cause [api], templates [], shards [1]/[0], mappings []
+[2020-02-24T23:02:20,204][INFO ][o.e.c.r.a.AllocationService] [_client_] Cluster health status changed from [YELLOW] to [GREEN] (reason: [shards started [[libraryserbian][0]] ...]).
+[2020-02-24T23:02:20,399][INFO ][o.e.c.m.MetaDataMappingService] [_client_] [libraryserbian/FyWsKucLQ1SwE5d_sRnIAQ] create_mapping [radovi]
+[2020-02-24T23:12:19,384][INFO ][o.e.n.Node               ] [_client_] stopping ...
+[2020-02-24T23:12:19,466][INFO ][o.e.n.Node               ] [_client_] stopped
+[2020-02-24T23:12:19,467][INFO ][o.e.n.Node               ] [_client_] closing ...
+[2020-02-24T23:12:19,486][INFO ][o.e.n.Node               ] [_client_] closed
+[2020-02-24T23:12:37,596][INFO ][o.e.n.Node               ] [_client_] initializing ...
+[2020-02-24T23:12:38,821][INFO ][o.e.e.NodeEnvironment    ] [_client_] using [1] data paths, mounts [[(C:)]], net usable_space [235.2gb], net total_space [334gb], spins? [unknown], types [NTFS]
+[2020-02-24T23:12:38,822][INFO ][o.e.e.NodeEnvironment    ] [_client_] heap size [1.9gb], compressed ordinary object pointers [true]
+[2020-02-24T23:12:38,833][INFO ][o.e.n.Node               ] [_client_] node name [_client_], node ID [ZGK7ys46RieVV7y9xEfldQ]
+[2020-02-24T23:12:38,834][INFO ][o.e.n.Node               ] [_client_] version[5.6.16], pid[7200], build[3a740d1/2019-03-13T15:33:36.565Z], OS[Windows 10/10.0/amd64], JVM[Oracle Corporation/Java HotSpot(TM) 64-Bit Server VM/1.8.0_221/25.221-b11]
+[2020-02-24T23:12:38,836][INFO ][o.e.n.Node               ] [_client_] JVM arguments [-Xms2g, -Xmx2g, -XX:+UseConcMarkSweepGC, -XX:CMSInitiatingOccupancyFraction=75, -XX:+UseCMSInitiatingOccupancyOnly, -XX:+AlwaysPreTouch, -Xss1m, -Djava.awt.headless=true, -Dfile.encoding=UTF-8, -Djna.nosys=true, -Djdk.io.permissionsUseCanonicalPath=true, -Dio.netty.noUnsafe=true, -Dio.netty.noKeySetOptimization=true, -Dio.netty.recycler.maxCapacityPerThread=0, -Dlog4j.shutdownHookEnabled=false, -Dlog4j2.disable.jmx=true, -Dlog4j.skipJansi=true, -XX:+HeapDumpOnOutOfMemoryError, -Delasticsearch, -Des.path.home=C:\Users\Alexandar\Documents\MASTER\1_semestar\UDD\elasticsearch-5.6.16]
+[2020-02-24T23:12:43,700][INFO ][o.e.p.PluginsService     ] [_client_] loaded module [aggs-matrix-stats]
+[2020-02-24T23:12:43,701][INFO ][o.e.p.PluginsService     ] [_client_] loaded module [ingest-common]
+[2020-02-24T23:12:43,702][INFO ][o.e.p.PluginsService     ] [_client_] loaded module [lang-expression]
+[2020-02-24T23:12:43,703][INFO ][o.e.p.PluginsService     ] [_client_] loaded module [lang-groovy]
+[2020-02-24T23:12:43,704][INFO ][o.e.p.PluginsService     ] [_client_] loaded module [lang-mustache]
+[2020-02-24T23:12:43,705][INFO ][o.e.p.PluginsService     ] [_client_] loaded module [lang-painless]
+[2020-02-24T23:12:43,706][INFO ][o.e.p.PluginsService     ] [_client_] loaded module [parent-join]
+[2020-02-24T23:12:43,708][INFO ][o.e.p.PluginsService     ] [_client_] loaded module [percolator]
+[2020-02-24T23:12:43,711][INFO ][o.e.p.PluginsService     ] [_client_] loaded module [reindex]
+[2020-02-24T23:12:43,712][INFO ][o.e.p.PluginsService     ] [_client_] loaded module [transport-netty3]
+[2020-02-24T23:12:43,713][INFO ][o.e.p.PluginsService     ] [_client_] loaded module [transport-netty4]
+[2020-02-24T23:12:43,715][INFO ][o.e.p.PluginsService     ] [_client_] loaded plugin [serbian-plugin]
+[2020-02-24T23:12:48,097][INFO ][o.e.d.DiscoveryModule    ] [_client_] using discovery type [zen]
+[2020-02-24T23:12:49,163][INFO ][o.e.n.Node               ] [_client_] initialized
+[2020-02-24T23:12:49,165][INFO ][o.e.n.Node               ] [_client_] starting ...
+[2020-02-24T23:12:52,556][INFO ][o.e.t.TransportService   ] [_client_] publish_address {127.0.0.1:9300}, bound_addresses {127.0.0.1:9300}, {[::1]:9300}
+[2020-02-24T23:12:55,679][INFO ][o.e.c.s.ClusterService   ] [_client_] new_master {_client_}{ZGK7ys46RieVV7y9xEfldQ}{rLEEp2RgTzGp51nFpt064A}{127.0.0.1}{127.0.0.1:9300}, reason: zen-disco-elected-as-master ([0] nodes joined)
+[2020-02-24T23:12:55,749][INFO ][o.e.g.GatewayService     ] [_client_] recovered [0] indices into cluster_state
+[2020-02-24T23:12:57,689][INFO ][o.e.h.n.Netty4HttpServerTransport] [_client_] publish_address {127.0.0.1:9200}, bound_addresses {127.0.0.1:9200}, {[::1]:9200}
+[2020-02-24T23:12:57,689][INFO ][o.e.n.Node               ] [_client_] started
+[2020-02-24T23:14:16,050][INFO ][o.e.c.m.MetaDataCreateIndexService] [_client_] [libraryserbian] creating index, cause [api], templates [], shards [1]/[0], mappings []
+[2020-02-24T23:14:16,398][INFO ][o.e.c.r.a.AllocationService] [_client_] Cluster health status changed from [YELLOW] to [GREEN] (reason: [shards started [[libraryserbian][0]] ...]).
+[2020-02-24T23:14:16,644][INFO ][o.e.c.m.MetaDataMappingService] [_client_] [libraryserbian/FsRiRlSZR4KgWq9KbDaQJw] create_mapping [radovi]
+[2020-02-24T23:24:08,268][INFO ][o.e.n.Node               ] [_client_] stopping ...
+[2020-02-24T23:24:08,310][INFO ][o.e.n.Node               ] [_client_] stopped
+[2020-02-24T23:24:08,312][INFO ][o.e.n.Node               ] [_client_] closing ...
+[2020-02-24T23:24:08,330][INFO ][o.e.n.Node               ] [_client_] closed
+[2020-02-24T23:24:37,771][INFO ][o.e.n.Node               ] [_client_] initializing ...
+[2020-02-24T23:24:38,871][INFO ][o.e.e.NodeEnvironment    ] [_client_] using [1] data paths, mounts [[(C:)]], net usable_space [235.2gb], net total_space [334gb], spins? [unknown], types [NTFS]
+[2020-02-24T23:24:38,874][INFO ][o.e.e.NodeEnvironment    ] [_client_] heap size [1.9gb], compressed ordinary object pointers [true]
+[2020-02-24T23:24:38,888][INFO ][o.e.n.Node               ] [_client_] node name [_client_], node ID [C-S64yv2QRWmTemp95-bqQ]
+[2020-02-24T23:24:38,889][INFO ][o.e.n.Node               ] [_client_] version[5.6.16], pid[6400], build[3a740d1/2019-03-13T15:33:36.565Z], OS[Windows 10/10.0/amd64], JVM[Oracle Corporation/Java HotSpot(TM) 64-Bit Server VM/1.8.0_221/25.221-b11]
+[2020-02-24T23:24:38,890][INFO ][o.e.n.Node               ] [_client_] JVM arguments [-Xms2g, -Xmx2g, -XX:+UseConcMarkSweepGC, -XX:CMSInitiatingOccupancyFraction=75, -XX:+UseCMSInitiatingOccupancyOnly, -XX:+AlwaysPreTouch, -Xss1m, -Djava.awt.headless=true, -Dfile.encoding=UTF-8, -Djna.nosys=true, -Djdk.io.permissionsUseCanonicalPath=true, -Dio.netty.noUnsafe=true, -Dio.netty.noKeySetOptimization=true, -Dio.netty.recycler.maxCapacityPerThread=0, -Dlog4j.shutdownHookEnabled=false, -Dlog4j2.disable.jmx=true, -Dlog4j.skipJansi=true, -XX:+HeapDumpOnOutOfMemoryError, -Delasticsearch, -Des.path.home=C:\Users\Alexandar\Documents\MASTER\1_semestar\UDD\elasticsearch-5.6.16]
+[2020-02-24T23:24:41,443][INFO ][o.e.p.PluginsService     ] [_client_] loaded module [aggs-matrix-stats]
+[2020-02-24T23:24:41,444][INFO ][o.e.p.PluginsService     ] [_client_] loaded module [ingest-common]
+[2020-02-24T23:24:41,446][INFO ][o.e.p.PluginsService     ] [_client_] loaded module [lang-expression]
+[2020-02-24T23:24:41,446][INFO ][o.e.p.PluginsService     ] [_client_] loaded module [lang-groovy]
+[2020-02-24T23:24:41,447][INFO ][o.e.p.PluginsService     ] [_client_] loaded module [lang-mustache]
+[2020-02-24T23:24:41,447][INFO ][o.e.p.PluginsService     ] [_client_] loaded module [lang-painless]
+[2020-02-24T23:24:41,448][INFO ][o.e.p.PluginsService     ] [_client_] loaded module [parent-join]
+[2020-02-24T23:24:41,449][INFO ][o.e.p.PluginsService     ] [_client_] loaded module [percolator]
+[2020-02-24T23:24:41,449][INFO ][o.e.p.PluginsService     ] [_client_] loaded module [reindex]
+[2020-02-24T23:24:41,450][INFO ][o.e.p.PluginsService     ] [_client_] loaded module [transport-netty3]
+[2020-02-24T23:24:41,451][INFO ][o.e.p.PluginsService     ] [_client_] loaded module [transport-netty4]
+[2020-02-24T23:24:41,452][INFO ][o.e.p.PluginsService     ] [_client_] loaded plugin [serbian-plugin]
+[2020-02-24T23:24:46,313][INFO ][o.e.d.DiscoveryModule    ] [_client_] using discovery type [zen]
+[2020-02-24T23:24:47,415][INFO ][o.e.n.Node               ] [_client_] initialized
+[2020-02-24T23:24:47,417][INFO ][o.e.n.Node               ] [_client_] starting ...
+[2020-02-24T23:24:50,945][INFO ][o.e.t.TransportService   ] [_client_] publish_address {127.0.0.1:9300}, bound_addresses {127.0.0.1:9300}, {[::1]:9300}
+[2020-02-24T23:24:54,033][INFO ][o.e.c.s.ClusterService   ] [_client_] new_master {_client_}{C-S64yv2QRWmTemp95-bqQ}{LI5SYY7pQTKH-CQCfRkqQw}{127.0.0.1}{127.0.0.1:9300}, reason: zen-disco-elected-as-master ([0] nodes joined)
+[2020-02-24T23:24:54,085][INFO ][o.e.g.GatewayService     ] [_client_] recovered [0] indices into cluster_state
+[2020-02-24T23:24:55,862][INFO ][o.e.h.n.Netty4HttpServerTransport] [_client_] publish_address {127.0.0.1:9200}, bound_addresses {127.0.0.1:9200}, {[::1]:9200}
+[2020-02-24T23:24:55,863][INFO ][o.e.n.Node               ] [_client_] started
+[2020-02-24T23:25:45,991][INFO ][o.e.c.m.MetaDataCreateIndexService] [_client_] [libraryserbian] creating index, cause [api], templates [], shards [1]/[0], mappings []
+[2020-02-24T23:25:46,540][INFO ][o.e.c.r.a.AllocationService] [_client_] Cluster health status changed from [YELLOW] to [GREEN] (reason: [shards started [[libraryserbian][0]] ...]).
+[2020-02-24T23:25:46,956][INFO ][o.e.c.m.MetaDataMappingService] [_client_] [libraryserbian/qB3vX550RS-SBE2SseluRw] create_mapping [radovi]
+[2020-02-24T23:38:34,961][INFO ][o.e.n.Node               ] [_client_] stopping ...
+[2020-02-24T23:38:35,000][INFO ][o.e.n.Node               ] [_client_] stopped
+[2020-02-24T23:38:35,001][INFO ][o.e.n.Node               ] [_client_] closing ...
+[2020-02-24T23:38:35,026][INFO ][o.e.n.Node               ] [_client_] closed

@@ -74,25 +74,34 @@ public class ResultRetriever {
 	        	rd.setNaslovRada(indexUnit.getNaslovRada());
 	        	rd.setNazivCasopisa(indexUnit.getNazivCasopisa());
 	        	rd.setSadrzaj(indexUnit.getSadrzaj());
-				for(SearchHit hit : response.getHits().getHits()) {
-					if (response.getHits().getHits().length <= 0) {
-						return null;
-					}
-					String allHighlights = "...";
-
-					Map<String, HighlightField> highlightFields = hit.getHighlightFields();
-
-					for (Map.Entry<String, HighlightField> entry : highlightFields.entrySet()){
-						//vrednost je tipa Text[] i mora da se odseku zagrade
-						System.out.println("Highlight: " + highlightFields);
-						String value = Arrays.toString(entry.getValue().fragments());
-						allHighlights+=value.substring(1, value.length()-1);
-						}
-						allHighlights+="...";
-					rd.setHighlight(allHighlights);
-				}
+	        	rd.setHighlight("");
 				results.add(rd);
         	}
+		}
+		for(SearchHit hit : response.getHits().getHits()) {
+			if (response.getHits().getHits().length <= 0) {
+				return null;
+			}
+			String allHighlights = "...";
+
+			Map<String, HighlightField> highlightFields = hit.getHighlightFields();
+
+			for (Map.Entry<String, HighlightField> entry : highlightFields.entrySet()){
+				//vrednost je tipa Text[] i mora da se odseku zagrade
+//						System.out.println("Highlight: " + highlightFields);
+				String value = Arrays.toString(entry.getValue().fragments());
+//				System.out.println("Vrednost: " + value);
+				allHighlights += value.substring(1, value.length()-1);
+			}
+			allHighlights+="...";
+			for(ResultData rd : results)
+			{
+				if(rd.getHighlight().equals(""))
+				{
+					rd.setHighlight(allHighlights);
+					break;
+				}
+			}
 		}
 		return results;
 	}

@@ -75,7 +75,12 @@ public class Naucni_radController {
             Naucna_oblast no = nos.getByNaziv(rad.getOblast_pripadanja().getNaziv());
             naucni_rad.setOblast_pripadanja(no);
             naucni_rad.setPutanja_upload_fajla(rad.getPutanja_upload_fajla());
+            for(KorisnikDTO korisnik : rad.getRecenzenti())
+            {
 
+                Korisnik k1 = korisnikService.findByKorisnicko_ime(korisnik.getKorisnicko_ime());
+                naucni_rad.getRecenzenti().add(k1);
+            }
             nrs.save(naucni_rad);
 
             return new ResponseEntity<>(HttpStatus.CREATED);

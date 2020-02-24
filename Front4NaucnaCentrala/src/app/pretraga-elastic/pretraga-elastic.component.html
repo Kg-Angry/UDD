@@ -22,8 +22,6 @@
             <mat-option value="nazivNaucneOblasti">NAZIV NAUCNE OBLASTI</mat-option>
           </mat-select>
         </mat-form-field>
-        <br/>
-          <mat-checkbox class="example-margin" [(ngModel)]="MoreLike" [ngModelOptions]="{standalone: true}">MoreLikeThis</mat-checkbox>
         <div class="input-field">
         <input type="submit" value="Pretraga" class="btn-search">
         </div>
@@ -103,6 +101,7 @@
       <th scope="col" style="text-align: center;">Sadrzaj</th>
       <th scope="col"></th>
       <th scope="col"></th>
+      <th scope="col"></th>
     </tr>
   </thead>
   <tbody>
@@ -113,7 +112,7 @@
       <td style="text-align: center;">{{r.kljucniPojmovi}}</td>
       <td style="text-align: center;">{{r.nazivnaucneOblasti}}</td>
       <td style="text-align: center;">{{r.nazivCasopisa}}</td>
-      <td><textarea rows="10" cols="75">{{r.sadrzaj}}</textarea></td>
+      <td><textarea rows="10" cols="50">{{r.sadrzaj}}</textarea></td>
       <td>
           <div *ngFor="let c of casopisi" >
             <button *ngIf="r.nazivCasopisa === c.naziv && c.tipCasopisa === 'OPEN_ACCESS'"  class="btn btn-green" (click)="Preuzmi(r.naslovRada)">Preuzmi</button>
@@ -123,7 +122,9 @@
       <td>
         <button class="btn btn-green" (click)="GeoProstornaPretraga(r.autor)">GeoProstorna pretraga</button>
       </td>
-
+      <td>
+        <button class="btn btn-green" (click)="MoreLikeThis(r.kljucniPojmovi)">MoreLikeThis</button>
+      </td>
     </tr>
   </tbody>
 </table>

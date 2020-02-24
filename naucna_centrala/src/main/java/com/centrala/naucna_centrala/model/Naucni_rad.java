@@ -35,12 +35,20 @@ public class Naucni_rad {
     @ManyToOne
     private Naucni_casopis naucni_casopis;
 
+    @ManyToMany
+    @JoinTable(
+            name="rad_recenzenti",
+            joinColumns = @JoinColumn( name = "naucni_rad_id"),
+            inverseJoinColumns = @JoinColumn (name = "korisnik_id")
+    )
+    private Set<Korisnik> recenzenti = new HashSet<>();
+
     public Naucni_rad()
     {
 
     }
 
-    public Naucni_rad(String naslov, String koautori, String kljucni_pojmovi, String apstrakt, Naucna_oblast oblast_pripadanja, String putanja_upload_fajla, Korisnik autor, Naucni_casopis naucni_casopis) {
+    public Naucni_rad(String naslov, String koautori, String kljucni_pojmovi, String apstrakt, Naucna_oblast oblast_pripadanja, String putanja_upload_fajla, Korisnik autor, Naucni_casopis naucni_casopis, Set<Korisnik> recenzenti) {
         this.naslov = naslov;
         this.koautori = koautori;
         this.kljucni_pojmovi = kljucni_pojmovi;
@@ -49,6 +57,7 @@ public class Naucni_rad {
         this.putanja_upload_fajla = putanja_upload_fajla;
         this.autor = autor;
         this.naucni_casopis = naucni_casopis;
+        this.recenzenti=recenzenti;
     }
 
     public Long getId() {
@@ -121,6 +130,14 @@ public class Naucni_rad {
 
     public void setAutor(Korisnik autor) {
         this.autor = autor;
+    }
+
+    public Set<Korisnik> getRecenzenti() {
+        return recenzenti;
+    }
+
+    public void setRecenzenti(Set<Korisnik> recenzenti) {
+        this.recenzenti = recenzenti;
     }
 }
 

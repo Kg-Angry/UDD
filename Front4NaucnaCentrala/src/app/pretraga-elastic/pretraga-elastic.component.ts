@@ -16,7 +16,6 @@ export class PretragaElasticComponent implements OnInit {
   rezultat: ResultRetriever[] = JSON.parse(localStorage.getItem('document'));
   casopisi: NaucniCasopis[] = JSON.parse(localStorage.getItem('casopisi'));
   AndOr: String = '';
-  MoreLike = false;
   korisnici: Korisnik[] = JSON.parse(localStorage.getItem('korisnici'));
 
   constructor(private pretragaService: PretragaElasticService) { }
@@ -27,12 +26,7 @@ export class PretragaElasticComponent implements OnInit {
   PretragaPoPoljima(event){
     event.preventDefault();
     const target = event.target;
-    if(this.MoreLike === false){
-      this.pretragaService.pretraziTermove(target, this.kriterijumPretrage);
-    } else{
-      this.pretragaService.moreLikeThisPretraga(target);
-    }
-
+    this.pretragaService.pretraziTermove(target, this.kriterijumPretrage);
   }
 
   Preuzmi(naslovRada: String){
@@ -48,9 +42,11 @@ export class PretragaElasticComponent implements OnInit {
   }
 
   GeoProstornaPretraga(nazivCasiopisa: String){
-
-
     this.pretragaService.GeoProstornaPretraga(nazivCasiopisa);
+  }
+
+  MoreLikeThis(naslovRada: String){
+    this.pretragaService.moreLikeThisPretraga(naslovRada);
   }
 
 }

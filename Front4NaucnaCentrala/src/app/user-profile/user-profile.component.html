@@ -254,6 +254,15 @@
                           </mat-form-field>
                         </div>
                         <div class="form-group">
+                          <label for="exampleInputEmail1">Recenzenti: </label>
+                          <mat-form-field>
+                            <mat-label>Recenzenti: </mat-label>
+                            <mat-select [(ngModel)]="RecenzentiCasopisa" [ngModelOptions]="{standalone: true}" multiple>
+                              <mat-option *ngFor="let r of IzabraniNaucniCasopis.recenzent" [value]="r">{{r.korisnicko_ime}}</mat-option>
+                            </mat-select>
+                          </mat-form-field>
+                        </div>
+                        <div class="form-group">
                           <label for="exampleInputEmail1">Upload fajl</label>
                           <input type="file" class="form-control" (change)="SelectFile($event)">
                         </div>

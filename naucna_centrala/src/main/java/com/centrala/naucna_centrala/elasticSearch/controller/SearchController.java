@@ -191,8 +191,8 @@ public class SearchController {
 
 		@PostMapping(value="/moreLike")
 		public ResponseEntity<List<ResultData>> moreLikePretraga(@RequestBody PretragaDTO pretragaDTO) throws ParseException {
-			String[] kriterijum = {"sadrzaj",
-					"autor","kljucniPojmovi","nazivCasopisa","nazivNaucneOblasti","naslovRada"};
+			String[] kriterijum = {"kljucniPojmovi",
+					"autor","sadrzaj","nazivCasopisa","nazivNaucneOblasti","naslovRada"};
 			String[] text = {pretragaDTO.getUpit()};
 
 			org.elasticsearch.index.query.MoreLikeThisQueryBuilder.Item[] item = {new MoreLikeThisQueryBuilder.Item("libraryserbian", "radovi", "filename")};

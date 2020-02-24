@@ -17,13 +17,14 @@ public class Naucni_radDTO {
     private String putanja_upload_fajla;
     private Naucni_casopisDTO naucni_casopis;
     private KorisnikDTO autor;
+    private Set<KorisnikDTO> recenzenti = new HashSet<>();
 
     public Naucni_radDTO()
     {
 
     }
 
-    public Naucni_radDTO(Long id, String naslov, String koautori, String kljucni_pojmovi, String apstrakt, Naucna_oblast oblast_pripadanja, String putanja_upload_fajla, Naucni_casopis naucni_casopis, Korisnik autor) {
+    public Naucni_radDTO(Long id, String naslov, String koautori, String kljucni_pojmovi, String apstrakt, Naucna_oblast oblast_pripadanja, String putanja_upload_fajla, Naucni_casopis naucni_casopis, Korisnik autor, Set<Korisnik> recenzenti) {
         this.id = id;
         this.naslov = naslov;
         this.koautori=koautori;
@@ -33,11 +34,15 @@ public class Naucni_radDTO {
         this.putanja_upload_fajla = putanja_upload_fajla;
         this.naucni_casopis = new Naucni_casopisDTO(naucni_casopis);
         this.autor = new KorisnikDTO(autor);
+        for(Korisnik k : recenzenti)
+        {
+            this.recenzenti.add(new KorisnikDTO(k));
+        }
     }
 
     public Naucni_radDTO(Naucni_rad nr)
     {
-        this(nr.getId(),nr.getNaslov(),nr.getKoautori(),nr.getKljucni_pojmovi(),nr.getApstrakt(),nr.getOblast_pripadanja(),nr.getPutanja_upload_fajla(),nr.getNaucni_casopis(),nr.getAutor());
+        this(nr.getId(),nr.getNaslov(),nr.getKoautori(),nr.getKljucni_pojmovi(),nr.getApstrakt(),nr.getOblast_pripadanja(),nr.getPutanja_upload_fajla(),nr.getNaucni_casopis(),nr.getAutor(),nr.getRecenzenti());
     }
 
     public Long getId() {
@@ -110,5 +115,13 @@ public class Naucni_radDTO {
 
     public void setAutor(KorisnikDTO autor) {
         this.autor = autor;
+    }
+
+    public Set<KorisnikDTO> getRecenzenti() {
+        return recenzenti;
+    }
+
+    public void setRecenzenti(Set<KorisnikDTO> recenzenti) {
+        this.recenzenti = recenzenti;
     }
 }

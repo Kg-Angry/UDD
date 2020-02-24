@@ -8,7 +8,7 @@ export class NaucniCasopis {
   tipCasopisa: String;
   glavni_urednik: Korisnik;
   urednici: Korisnik[];
-  recenzenti: Korisnik[];
+  recenzent: Korisnik[];
   naucna_oblast: NaucnaOblast[];
   tipoviPlacanja: TipPlacanja[];
   status: boolean;
