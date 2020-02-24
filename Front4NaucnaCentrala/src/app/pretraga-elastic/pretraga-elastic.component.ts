@@ -1,3 +1,4 @@
+import { Korisnik } from './../class/korisnik';
 import { NaucniCasopis } from './../class/naucni-casopis';
 import { ResultRetriever } from './../class/result-retriever';
 import { PretragaElasticService } from './pretraga-elastic.service';
@@ -16,6 +17,7 @@ export class PretragaElasticComponent implements OnInit {
   casopisi: NaucniCasopis[] = JSON.parse(localStorage.getItem('casopisi'));
   AndOr: String = '';
   MoreLike = false;
+  korisnici: Korisnik[] = JSON.parse(localStorage.getItem('korisnici'));
 
   constructor(private pretragaService: PretragaElasticService) { }
 
@@ -43,6 +45,12 @@ export class PretragaElasticComponent implements OnInit {
     event.preventDefault();
     const target = event.target;
     this.pretragaService.naprednaPretraga(target, this.AndOr);
+  }
+
+  GeoProstornaPretraga(nazivCasiopisa: String){
+
+
+    this.pretragaService.GeoProstornaPretraga(nazivCasiopisa);
   }
 
 }

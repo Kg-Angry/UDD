@@ -39,4 +39,9 @@ public class Korisnik_service {
     {
         return kr.save(k);
     }
+
+    public Korisnik findByImeAndPrezime(String ime,String prezime)
+    {
+        return kr.findByImeAndPrezime(ime,prezime);
+    }
 }

@@ -111,8 +111,8 @@ public class Naucni_radController {
                 indexUnit.setAutor(nr.getAutor().getIme()+" "+ nr.getAutor().getPrezime());
                 indexUnit.setNazivCasopisa(nr.getNaucni_casopis().getNaziv());
                 indexUnit.setNazivNaucneOblasti(nr.getOblast_pripadanja().getNaziv());
-                //org.springframework.data.elasticsearch.core.geo.GeoPoint geopoint = new org.springframework.data.elasticsearch.core.geo.GeoPoint(k.getLattitude(),k.getLongitude());
-                //indexUnit.setGeo_point(geopoint);
+                org.springframework.data.elasticsearch.core.geo.GeoPoint geopoint = new org.springframework.data.elasticsearch.core.geo.GeoPoint(nr.getAutor().getLattitude(),nr.getAutor().getLongitude());
+                indexUnit.setGeo_point(geopoint);
                 indexer.add(indexUnit);
 
                 return new ResponseEntity<>(HttpStatus.CREATED);

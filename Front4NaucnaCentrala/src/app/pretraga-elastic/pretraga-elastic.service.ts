@@ -3,6 +3,7 @@ import { ResultRetriever } from './../class/result-retriever';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { timer } from 'rxjs';
+import { Korisnik } from '../class/korisnik';
 
 @Injectable({
   providedIn: 'root'
@@ -92,5 +93,24 @@ export class PretragaElasticService {
 
     return this.http.post('api/pretraga/moreLike', {upit: vrednost}).subscribe((data: ResultRetriever) =>
     {localStorage.setItem('document', JSON.stringify(data)); location.href = '/search'});
+  }
+
+  GeoProstornaPretraga(autor: String){
+    let imePrezimeRecenzenta = 'Recenzenti: \n';
+    return this.http.post('api/pretraga/geoProstorna',{koautori: autor}).subscribe((data: Korisnik[]) =>
+    {
+      for(let i=0;i<data.length;i++)
+      {
+        imePrezimeRecenzenta+=data[i].ime+' '+data[i].prezime + '\n';
+      }
+      Swal.fire({
+        position: 'top-end',
+        icon: 'success',
+        title: imePrezimeRecenzenta,
+        showConfirmButton: false,
+        timer: 4500
+      });
+    });
+
   }
 }

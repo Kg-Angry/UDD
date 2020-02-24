@@ -20,14 +20,15 @@ public class KorisnikDTO {
     private String lozinka;
     private TipKorisnika tipKorisnika;
     private boolean aktiviran_nalog;
-
+    private Double longitude;
+    private Double lattitude;
 
     public KorisnikDTO()
     {
 
     }
 
-    public KorisnikDTO(Long id,String ime, String prezime, String grad, String drzava, String titula, String email, String korisnicko_ime, String lozinka, TipKorisnika tipKorisnika, boolean aktiviran_nalog) {
+    public KorisnikDTO(Long id,String ime, String prezime, String grad, String drzava, String titula, String email, String korisnicko_ime, String lozinka, TipKorisnika tipKorisnika, boolean aktiviran_nalog,Double longitude,Double lattitude) {
         this.id = id;
         this.ime = ime;
         this.prezime = prezime;
@@ -39,11 +40,13 @@ public class KorisnikDTO {
         this.lozinka = lozinka;
         this.tipKorisnika = tipKorisnika;
         this.aktiviran_nalog = aktiviran_nalog;
+        this.longitude=longitude;
+        this.lattitude=lattitude;
     }
 
     public KorisnikDTO(Korisnik k)
     {
-        this(k.getId(),k.getIme(),k.getPrezime(),k.getGrad(),k.getDrzava(),k.getTitula(),k.getEmail(),k.getKorisnickoIme(),k.getLozinka(),k.getTipKorisnika(),k.isAktiviran_nalog());
+        this(k.getId(),k.getIme(),k.getPrezime(),k.getGrad(),k.getDrzava(),k.getTitula(),k.getEmail(),k.getKorisnickoIme(),k.getLozinka(),k.getTipKorisnika(),k.isAktiviran_nalog(),k.getLongitude(),k.getLattitude());
     }
 
     public Long getId() {
@@ -132,5 +135,21 @@ public class KorisnikDTO {
 
     public void setAktiviran_nalog(boolean aktiviran_nalog) {
         this.aktiviran_nalog = aktiviran_nalog;
+    }
+
+    public Double getLongitude() {
+        return longitude;
+    }
+
+    public void setLongitude(Double longitude) {
+        this.longitude = longitude;
+    }
+
+    public Double getLattitude() {
+        return lattitude;
+    }
+
+    public void setLattitude(Double lattitude) {
+        this.lattitude = lattitude;
     }
 }

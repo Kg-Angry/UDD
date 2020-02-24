@@ -82,6 +82,7 @@
             </div>
           </form>
       </div>
+      <br/>
       </div>
       </div>
     </div>
@@ -101,6 +102,7 @@
       <th scope="col" style="text-align: center;">Casopis</th>
       <th scope="col" style="text-align: center;">Sadrzaj</th>
       <th scope="col"></th>
+      <th scope="col"></th>
     </tr>
   </thead>
   <tbody>
@@ -118,6 +120,10 @@
             <button *ngIf="r.nazivCasopisa === c.naziv && c.tipCasopisa === 'SA_PRETPLATOM'"  class="btn btn-green" (click)="Kupi(r.naslovRada)">Kupi</button>
           </div>
       </td>
+      <td>
+        <button class="btn btn-green" (click)="GeoProstornaPretraga(r.autor)">GeoProstorna pretraga</button>
+      </td>
+
     </tr>
   </tbody>
 </table>

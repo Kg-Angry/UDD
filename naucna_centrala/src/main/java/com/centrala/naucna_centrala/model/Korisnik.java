@@ -56,12 +56,18 @@ public class Korisnik {
     @ManyToMany(mappedBy = "recenzent", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private Set<Naucni_casopis> recenzenti = new HashSet<>();
 
+    @Column(name="longitude")
+    private Double longitude;
+
+    @Column(name="lattitude")
+    private Double lattitude;
+
     public Korisnik()
     {
 
     }
 
-    public Korisnik(String ime, String prezime, String grad, String drzava, String titula, String email, String korisnickoIme, String lozinka, TipKorisnika tipKorisnika, boolean aktiviran_nalog, Set<Naucni_casopis> id_casopisa, Set<Naucni_casopis> recenzenti) {
+    public Korisnik(String ime, String prezime, String grad, String drzava, String titula, String email, String korisnickoIme, String lozinka, TipKorisnika tipKorisnika, boolean aktiviran_nalog, Set<Naucni_casopis> id_casopisa, Set<Naucni_casopis> recenzenti, Double longitude , Double lattitude ) {
         this.ime = ime;
         this.prezime = prezime;
         this.grad = grad;
@@ -74,6 +80,8 @@ public class Korisnik {
         this.aktiviran_nalog = aktiviran_nalog;
         this.id_casopisa = id_casopisa;
         this.recenzenti = recenzenti;
+        this.longitude=longitude;
+        this.lattitude=lattitude;
 
     }
 
@@ -179,5 +187,21 @@ public class Korisnik {
 
     public void setRecenzenti(Set<Naucni_casopis> recenzenti) {
         this.recenzenti = recenzenti;
+    }
+
+    public Double getLongitude() {
+        return longitude;
+    }
+
+    public void setLongitude(Double longitude) {
+        this.longitude = longitude;
+    }
+
+    public Double getLattitude() {
+        return lattitude;
+    }
+
+    public void setLattitude(Double lattitude) {
+        this.lattitude = lattitude;
     }
 }

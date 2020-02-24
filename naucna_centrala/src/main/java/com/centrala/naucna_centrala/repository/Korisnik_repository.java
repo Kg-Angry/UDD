@@ -9,4 +9,5 @@ public interface Korisnik_repository extends JpaRepository<Korisnik,Long> {
 
     void deleteByKorisnickoIme(String korisnicko_ime);
     Korisnik findByKorisnickoIme(String korisnicko_ime);
+    Korisnik findByImeAndPrezime(String ime, String prezime);
 }
